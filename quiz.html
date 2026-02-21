@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Interactive Quiz — Protein Structure Explorer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+.quiz-container {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.question-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+}
+
+.question-text {
+  font-size: 1.2rem;
+  color: var(--cyan);
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.option:hover {
+  background: rgba(0,245,255,0.05);
+  border-color: var(--cyan);
+}
+
+.option input[type="radio"] {
+  cursor: pointer;
+}
+
+.option.correct {
+  background: rgba(0,255,136,0.1);
+  border-color: var(--green);
+}
+
+.option.incorrect {
+  background: rgba(255,0,0,0.1);
+  border-color: #ff6b6b;
+}
+
+.btn-submit {
+  background: linear-gradient(135deg, var(--cyan), #0099cc);
+  color: #030a13;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 50px;
+  font-weight: 700;
+  cursor: pointer;
+  font-size: 1rem;
+  width: 100%;
+  transition: all 0.3s;
+}
+
+.btn-submit:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(0,245,255,0.3);
+}
+
+.score {
+  text-align: center;
+  font-size: 2rem;
+  color: var(--green);
+  margin: 2rem 0;
+  font-weight: 700;
+}
+</style>
+</head>
+<body>
+
+<!-- ══ NAVBAR ══ -->
+<nav>
+  <a href="protein_structure.html" class="nav-logo">⬡ PROTEIN<span>EXPLORER</span></a>
+  <ul class="nav-links">
+
+    <!-- 1. PROTEINS -->
+    <li class="nav-item">
+      <a href="introduction.html">Proteins ▾</a>
+      <div class="mega-drop wide">
+        <div class="drop-col">
+          <div class="drop-col-title">Basics</div>
+          <a class="drop-item" href="introduction.html"><span class="drop-icon">🧬</span><span class="drop-text"><span class="dt">What Are Proteins?</span><span class="dd">Definition & history</span></span></a>
+          <a class="drop-item" href="amino-acids.html"><span class="drop-icon">⚗️</span><span class="drop-text"><span class="dt">Amino Acids</span><span class="dd">20 building blocks</span></span></a>
+          <a class="drop-item" href="introduction.html"><span class="drop-icon">🔗</span><span class="drop-text"><span class="dt">Peptide Bonds</span><span class="dd">Condensation chemistry</span></span></a>
+          <a class="drop-item" href="introduction.html"><span class="drop-icon">🌀</span><span class="drop-text"><span class="dt">Polypeptides</span><span class="dd">Chain formation</span></span></a>
+          <a class="drop-item" href="protein-synthesis.html"><span class="drop-icon">🏭</span><span class="drop-text"><span class="dt">Ribosomes</span><span class="dd">Protein factories</span></span></a>
+          <a class="drop-item" href="protein-synthesis.html"><span class="drop-icon">📐</span><span class="drop-text"><span class="dt">Central Dogma</span><span class="dd">DNA→RNA→Protein</span></span></a>
+        </div>
+        <div class="drop-col">
+          <div class="drop-col-title">Types</div>
+          <a class="drop-item" href="protein-families.html"><span class="drop-icon">⚡</span><span class="drop-text"><span class="dt">Enzymes</span><span class="dd">Biological catalysts</span></span></a>
+          <a class="drop-item" href="protein-families.html"><span class="drop-icon">💉</span><span class="drop-text"><span class="dt">Hormones</span><span class="dd">Chemical messengers</span></span></a>
+          <a class="drop-item" href="protein-families.html"><span class="drop-icon">🛡️</span><span class="drop-text"><span class="dt">Antibodies</span><span class="dd">Immune defenders</span></span></a>
+          <a class="drop-item" href="protein-families.html"><span class="drop-icon">🚌</span><span class="drop-text"><span class="dt">Transport</span><span class="dd">Hemoglobin, albumin</span></span></a>
+          <a class="drop-item" href="protein-families.html"><span class="drop-icon">🏗️</span><span class="drop-text"><span class="dt">Structural</span><span class="dd">Collagen, keratin</span></span></a>
+          <a class="drop-item" href="protein-families.html"><span class="drop-icon">🏃</span><span class="drop-text"><span class="dt">Motor Proteins</span><span class="dd">Myosin, kinesin</span></span></a>
+        </div>
+        <div class="drop-col">
+          <div class="drop-col-title">Functions</div>
+          <a class="drop-item" href="protein-families.html"><span class="drop-icon">🔬</span><span class="drop-text"><span class="dt">Catalysis</span><span class="dd">Enzyme mechanisms</span></span></a>
+          <a class="drop-item" href="introduction.html"><span class="drop-icon">📡</span><span class="drop-text"><span class="dt">Cell Signaling</span><span class="dd">Receptors & cascades</span></span></a>
+          <a class="drop-item" href="protein-synthesis.html"><span class="drop-icon">🧬</span><span class="drop-text"><span class="dt">DNA Replication</span><span class="dd">Polymerases</span></span></a>
+          <a class="drop-item" href="protein-families.html"><span class="drop-icon">💪</span><span class="drop-text"><span class="dt">Muscle Contraction</span><span class="dd">Actin–myosin cycle</span></span></a>
+          <a class="drop-item" href="diseases.html"><span class="drop-icon">🦠</span><span class="drop-text"><span class="dt">Immune Defense</span><span class="dd">Antibodies & MHC</span></span></a>
+          <a class="drop-item" href="protein-families.html"><span class="drop-icon">🩸</span><span class="drop-text"><span class="dt">O₂ Transport</span><span class="dd">Hemoglobin & myoglobin</span></span></a>
+        </div>
+      </div>
+    </li>
+
+    <!-- 2. STRUCTURE LEVELS -->
+    <li class="nav-item">
+      <a href="protein-structure-levels.html">Structure ▾</a>
+      <div class="mega-drop">
+        <div class="drop-col">
+          <div class="drop-col-title">4 Levels</div>
+          <a class="drop-item" href="protein-structure-levels.html"><span class="drop-icon">①</span><span class="drop-text"><span class="dt">Primary</span><span class="dd">Amino acid sequence</span></span></a>
+          <a class="drop-item" href="protein-structure-levels.html"><span class="drop-icon">②</span><span class="drop-text"><span class="dt">Secondary</span><span class="dd">α-helices & β-sheets</span></span></a>
+          <a class="drop-item" href="protein-structure-levels.html"><span class="drop-icon">③</span><span class="drop-text"><span class="dt">Tertiary</span><span class="dd">3D globular fold</span></span></a>
+          <a class="drop-item" href="protein-structure-levels.html"><span class="drop-icon">④</span><span class="drop-text"><span class="dt">Quaternary</span><span class="dd">Multi-subunit complexes</span></span></a>
+        </div>
+        <div class="drop-col">
+          <div class="drop-col-title">Key Concepts</div>
+          <a class="drop-item" href="protein-structure-levels.html"><span class="drop-icon">🔄</span><span class="drop-text"><span class="dt">H-Bonds</span><span class="dd">Backbone interactions</span></span></a>
+          <a class="drop-item" href="protein-structure-levels.html"><span class="drop-icon">💧</span><span class="drop-text"><span class="dt">Hydrophobic Core</span><span class="dd">Driving force for folding</span></span></a>
+          <a class="drop-item" href="protein-structure-levels.html"><span class="drop-icon">⚙️</span><span class="drop-text"><span class="dt">Disulfide Bonds</span><span class="dd">Covalent stabilization</span></span></a>
+          <a class="drop-item" href="protein-structure-levels.html"><span class="drop-icon">📊</span><span class="drop-text"><span class="dt">Ramachandran Plot</span><span class="dd">Allowed φ/ψ angles</span></span></a>
+        </div>
+      </div>
+    </li>
+
+    <!-- 3. 3D MODELS -->
+    <li class="nav-item">
+      <a href="3d-models.html">3D Models ▾</a>
+      <div class="mega-drop wide">
+        <div class="drop-col">
+          <div class="drop-col-title">Basic</div>
+          <a class="drop-item" href="3d-models.html"><span class="drop-icon">🔵</span><span class="drop-text"><span class="dt">Primary Chain</span><span class="dd">Polypeptide backbone</span></span></a>
+          <a class="drop-item" href="3d-models.html"><span class="drop-icon">🌀</span><span class="drop-text"><span class="dt">Alpha-Helix</span><span class="dd">Right-handed coil</span></span></a>
+          <a class="drop-item" href="3d-models.html"><span class="drop-icon">📋</span><span class="drop-text"><span class="dt">Beta-Sheet</span><span class="dd">Parallel/antiparallel strands</span></span></a>
+          <a class="drop-item" href="3d-models.html"><span class="drop-icon">🔮</span><span class="drop-text"><span class="dt">Tertiary Fold</span><span class="dd">Globular 3D fold</span></span></a>
+        </div>
+        <div class="drop-col">
+          <div class="drop-col-title">Classic</div>
+          <a class="drop-item" href="3d-models.html"><span class="drop-icon">🩸</span><span class="drop-text"><span class="dt">Hemoglobin</span><span class="dd">Heterotetramer</span></span></a>
+          <a class="drop-item" href="3d-models.html"><span class="drop-icon">🦴</span><span class="drop-text"><span class="dt">Collagen</span><span class="dd">Triple helix</span></span></a>
+          <a class="drop-item" href="3d-models.html"><span class="drop-icon">💉</span><span class="drop-text"><span class="dt">Insulin</span><span class="dd">Disulfide-linked chains</span></span></a>
+          <a class="drop-item" href="3d-models.html"><span class="drop-icon">🏋️</span><span class="drop-text"><span class="dt">Myoglobin</span><span class="dd">O₂-binding globin</span></span></a>
+        </div>
+        <div class="drop-col">
+          <div class="drop-col-title">Machines</div>
+          <a class="drop-item" href="3d-models.html"><span class="drop-icon">⚡</span><span class="drop-text"><span class="dt">ATP Synthase</span><span class="dd">Rotary motor</span></span></a>
+          <a class="drop-item" href="3d-models.html"><span class="drop-icon">🏭</span><span class="drop-text"><span class="dt">Ribosome</span><span class="dd">Protein factory</span></span></a>
+          <a class="drop-item" href="3d-models.html"><span class="drop-icon">Y️</span><span class="drop-text"><span class="dt">Antibody IgG</span><span class="dd">Y-shaped immune protein</span></span></a>
+          <a class="drop-item" href="3d-models.html"><span class="drop-icon">🗑️</span><span class="drop-text"><span class="dt">Proteasome</span><span class="dd">Protein degrader</span></span></a>
+        </div>
+      </div>
+    </li>
+
+    <!-- 4. FAMILIES -->
+    <li class="nav-item">
+      <a href="protein-families.html">Families ▾</a>
+      <div class="mega-drop">
+        <div class="drop-col">
+          <div class="drop-col-title">Categories</div>
+          <a class="drop-item" href="protein-families.html"><span class="drop-icon">⚽</span><span class="drop-text"><span class="dt">Globular</span><span class="dd">Compact & soluble</span></span></a>
+          <a class="drop-item" href="protein-families.html"><span class="drop-icon">🧵</span><span class="drop-text"><span class="dt">Fibrous</span><span class="dd">Structural filaments</span></span></a>
+          <a class="drop-item" href="protein-families.html"><span class="drop-icon">🫧</span><span class="drop-text"><span class="dt">Membrane</span><span class="dd">Embedded in bilayer</span></span></a>
+          <a class="drop-item" href="protein-families.html"><span class="drop-icon">🌊</span><span class="drop-text"><span class="dt">Disordered</span><span class="dd">No fixed structure</span></span></a>
+        </div>
+        <div class="drop-col">
+          <div class="drop-col-title">Specialized</div>
+          <a class="drop-item" href="protein-families.html"><span class="drop-icon">🔧</span><span class="drop-text"><span class="dt">Enzymes</span><span class="dd">6 EC classes</span></span></a>
+          <a class="drop-item" href="protein-families.html"><span class="drop-icon">🛡️</span><span class="drop-text"><span class="dt">Antibodies</span><span class="dd">5 immunoglobulin classes</span></span></a>
+          <a class="drop-item" href="protein-families.html"><span class="drop-icon">🏃</span><span class="drop-text"><span class="dt">Motor Proteins</span><span class="dd">Myosin, kinesin, dynein</span></span></a>
+          <a class="drop-item" href="protein-families.html"><span class="drop-icon">🫂</span><span class="drop-text"><span class="dt">Chaperones</span><span class="dd">Folding assistants</span></span></a>
+        </div>
+      </div>
+    </li>
+
+    <!-- 5. DISEASES -->
+    <li class="nav-item">
+      <a href="diseases.html">Diseases ▾</a>
+      <div class="mega-drop">
+        <div class="drop-col">
+          <div class="drop-col-title">Misfolding</div>
+          <a class="drop-item" href="diseases.html"><span class="drop-icon">🧠</span><span class="drop-text"><span class="dt">Alzheimer's</span><span class="dd">Aβ plaques + tau tangles</span></span></a>
+          <a class="drop-item" href="diseases.html"><span class="drop-icon">🤝</span><span class="drop-text"><span class="dt">Parkinson's</span><span class="dd">α-synuclein Lewy bodies</span></span></a>
+          <a class="drop-item" href="diseases.html"><span class="drop-icon">👻</span><span class="drop-text"><span class="dt">Prion Diseases</span><span class="dd">PrPc → PrPsc</span></span></a>
+        </div>
+        <div class="drop-col">
+          <div class="drop-col-title">Genetic</div>
+          <a class="drop-item" href="diseases.html"><span class="drop-icon">🩸</span><span class="drop-text"><span class="dt">Sickle Cell</span><span class="dd">Glu6Val in β-globin</span></span></a>
+          <a class="drop-item" href="diseases.html"><span class="drop-icon">🫁</span><span class="drop-text"><span class="dt">Cystic Fibrosis</span><span class="dd">CFTR mutations</span></span></a>
+          <a class="drop-item" href="diseases.html"><span class="drop-icon">🦴</span><span class="drop-text"><span class="dt">Osteogenesis Imperfecta</span><span class="dd">Defective collagen</span></span></a>
+          <a class="drop-item" href="diseases.html"><span class="drop-icon">🧬</span><span class="drop-text"><span class="dt">PKU</span><span class="dd">Phenylalanine accumulation</span></span></a>
+        </div>
+      </div>
+    </li>
+
+    <!-- 6. TECHNIQUES -->
+    <li class="nav-item">
+      <a href="techniques.html">Techniques ▾</a>
+      <div class="mega-drop">
+        <div class="drop-col">
+          <div class="drop-col-title">Structural</div>
+          <a class="drop-item" href="techniques.html"><span class="drop-icon">💎</span><span class="drop-text"><span class="dt">X-Ray Crystallography</span><span class="dd">Atomic resolution</span></span></a>
+          <a class="drop-item" href="techniques.html"><span class="drop-icon">🧲</span><span class="drop-text"><span class="dt">NMR Spectroscopy</span><span class="dd">Solution structures</span></span></a>
+          <a class="drop-item" href="techniques.html"><span class="drop-icon">❄️</span><span class="drop-text"><span class="dt">Cryo-EM</span><span class="dd">Resolution revolution</span></span></a>
+          <a class="drop-item" href="techniques.html"><span class="drop-icon">🤖</span><span class="drop-text"><span class="dt">AlphaFold AI</span><span class="dd">AI structure prediction</span></span></a>
+        </div>
+        <div class="drop-col">
+          <div class="drop-col-title">Analytical</div>
+          <a class="drop-item" href="techniques.html"><span class="drop-icon">⚖️</span><span class="drop-text"><span class="dt">Mass Spectrometry</span><span class="dd">Protein identification</span></span></a>
+          <a class="drop-item" href="techniques.html"><span class="drop-icon">🌈</span><span class="drop-text"><span class="dt">CD Spectroscopy</span><span class="dd">Secondary structure</span></span></a>
+          <a class="drop-item" href="techniques.html"><span class="drop-icon">💡</span><span class="drop-text"><span class="dt">FRET</span><span class="dd">Molecular distances</span></span></a>
+          <a class="drop-item" href="techniques.html"><span class="drop-icon">🧫</span><span class="drop-text"><span class="dt">SDS-PAGE/Western</span><span class="dd">Size separation</span></span></a>
+        </div>
+      </div>
+    </li>
+
+    <!-- 7. DATABASE -->
+    <li class="nav-item">
+      <a href="pdb.html">Database ▾</a>
+      <div class="mega-drop">
+        <div class="drop-col">
+          <div class="drop-col-title">Databases</div>
+          <a class="drop-item" href="pdb.html"><span class="drop-icon">🏛️</span><span class="drop-text"><span class="dt">Protein Data Bank</span><span class="dd">200K+ structures</span></span></a>
+          <a class="drop-item" href="pdb.html"><span class="drop-icon">🤖</span><span class="drop-text"><span class="dt">AlphaFold DB</span><span class="dd">200M+ predictions</span></span></a>
+          <a class="drop-item" href="pdb.html"><span class="drop-icon">📚</span><span class="drop-text"><span class="dt">UniProt</span><span class="dd">Protein knowledgebase</span></span></a>
+          <a class="drop-item" href="pdb.html"><span class="drop-icon">🔬</span><span class="drop-text"><span class="dt">NCBI Protein</span><span class="dd">Sequence database</span></span></a>
+        </div>
+        <div class="drop-col">
+          <div class="drop-col-title">Tools</div>
+          <a class="drop-item" href="pdb.html"><span class="drop-icon">🖥️</span><span class="drop-text"><span class="dt">PyMOL</span><span class="dd">Structure visualization</span></span></a>
+          <a class="drop-item" href="pdb.html"><span class="drop-icon">💻</span><span class="drop-text"><span class="dt">BLAST</span><span class="dd">Sequence alignment</span></span></a>
+          <a class="drop-item" href="pdb.html"><span class="drop-icon">🌐</span><span class="drop-text"><span class="dt">Mol* Viewer</span><span class="dd">Web-based 3D viewer</span></span></a>
+          <a class="drop-item" href="pdb.html"><span class="drop-icon">🧮</span><span class="drop-text"><span class="dt">Clustal Omega</span><span class="dd">Multiple alignment</span></span></a>
+        </div>
+      </div>
+    </li>
+
+    <!-- 8. RESOURCES -->
+    <li class="nav-item">
+      <a href="quiz.html">Resources ▾</a>
+      <div class="mega-drop">
+        <div class="drop-col">
+          <div class="drop-col-title">Self-Test & Reference</div>
+          <a class="drop-item" href="quiz.html"><span class="drop-icon">❓</span><span class="drop-text"><span class="dt">10-Question Quiz</span><span class="dd">Test your knowledge</span></span></a>
+          <a class="drop-item" href="glossary.html"><span class="drop-icon">📖</span><span class="drop-text"><span class="dt">Glossary A–Z</span><span class="dd">60+ searchable terms</span></span></a>
+          <a class="drop-item" href="protein-families.html"><span class="drop-icon">🔍</span><span class="drop-text"><span class="dt">Protein Profiles</span><span class="dd">10 case studies</span></span></a>
+          <a class="drop-item" href="evolution.html"><span class="drop-icon">🧫</span><span class="drop-text"><span class="dt">Bioinformatics</span><span class="dd">Evolution & tools</span></span></a>
+        </div>
+      </div>
+    </li>
+
+  </ul>
+</nav>
+
+<!-- ══ PAGE HEADER ══ -->
+<div class="page-header">
+  <div>
+    <a href="protein_structure.html" class="back-btn">← Back to Home</a>
+    <h1>Interactive <span style="color:var(--cyan)">Quiz</span></h1>
+    <p>Test your knowledge of protein biology! This quiz covers concepts from amino acids to disease.</p>
+  </div>
+</div>
+
+<section>
+  <div class="section-inner quiz-container">
+    <form id="quizForm" onsubmit="submitQuiz(event)">
+      
+      <!-- Question 1 -->
+      <div class="question-card">
+        <div class="question-text">1. How many standard amino acids are found in proteins?</div>
+        <div class="options">
+          <label class="option">
+            <input type="radio" name="q1" value="a"> 10 amino acids
+          </label>
+          <label class="option">
+            <input type="radio" name="q1" value="b"> 20 amino acids
+          </label>
+          <label class="option">
+            <input type="radio" name="q1" value="c"> 30 amino acids
+          </label>
+          <label class="option">
+            <input type="radio" name="q1" value="d"> 50 amino acids
+          </label>
+        </div>
+      </div>
+
+      <!-- Question 2 -->
+      <div class="question-card">
+        <div class="question-text">2. Which structure level is stabilized primarily by hydrogen bonds between backbone atoms?</div>
+        <div class="options">
+          <label class="option">
+            <input type="radio" name="q2" value="a"> Primary structure
+          </label>
+          <label class="option">
+            <input type="radio" name="q2" value="b"> Secondary structure
+          </label>
+          <label class="option">
+            <input type="radio" name="q2" value="c"> Tertiary structure
+          </label>
+          <label class="option">
+            <input type="radio" name="q2" value="d"> Quaternary structure
+          </label>
+        </div>
+      </div>
+
+      <!-- Question 3 -->
+      <div class="question-card">
+        <div class="question-text">3. What bond forms between cysteine residues to stabilize protein structure?</div>
+        <div class="options">
+          <label class="option">
+            <input type="radio" name="q3" value="a"> Hydrogen bond
+          </label>
+          <label class="option">
+            <input type="radio" name="q3" value="b"> Ionic bond
+          </label>
+          <label class="option">
+            <input type="radio" name="q3" value="c"> Disulfide bond
+          </label>
+          <label class="option">
+            <input type="radio" name="q3" value="d"> Van der Waals force
+          </label>
+        </div>
+      </div>
+
+      <!-- Question 4 -->
+      <div class="question-card">
+        <div class="question-text">4. Which technique won the 2017 Nobel Prize in Chemistry for determining protein structures?</div>
+        <div class="options">
+          <label class="option">
+            <input type="radio" name="q4" value="a"> X-Ray Crystallography
+          </label>
+          <label class="option">
+            <input type="radio" name="q4" value="b"> Cryo-Electron Microscopy
+          </label>
+          <label class="option">
+            <input type="radio" name="q4" value="c"> NMR Spectroscopy
+          </label>
+          <label class="option">
+            <input type="radio" name="q4" value="d"> Mass Spectrometry
+          </label>
+        </div>
+      </div>
+
+      <!-- Question 5 -->
+      <div class="question-card">
+        <div class="question-text">5. What is the primary driving force for tertiary protein structure formation?</div>
+        <div class="options">
+          <label class="option">
+            <input type="radio" name="q5" value="a"> Electrostatic attraction
+          </label>
+          <label class="option">
+            <input type="radio" name="q5" value="b"> Hydrophobic effect
+          </label>
+          <label class="option">
+            <input type="radio" name="q5" value="c"> Peptide bonding
+          </label>
+          <label class="option">
+            <input type="radio" name="q5" value="d"> Hydrogen bonding
+          </label>
+        </div>
+      </div>
+
+      <!-- Question 6 -->
+      <div class="question-card">
+        <div class="question-text">6. Which genetic disease results from a single amino acid substitution (Glu6Val) in β-globin?</div>
+        <div class="options">
+          <label class="option">
+            <input type="radio" name="q6" value="a"> Cystic Fibrosis
+          </label>
+          <label class="option">
+            <input type="radio" name="q6" value="b"> Sickle Cell Disease
+          </label>
+          <label class="option">
+            <input type="radio" name="q6" value="c"> Hemophilia
+          </label>
+          <label class="option">
+            <input type="radio" name="q6" value="d"> Phenylketonuria
+          </label>
+        </div>
+      </div>
+
+      <!-- Question 7 -->
+      <div class="question-card">
+        <div class="question-text">7. What is the central dogma of molecular biology?</div>
+        <div class="options">
+          <label class="option">
+            <input type="radio" name="q7" value="a"> Protein → RNA → DNA
+          </label>
+          <label class="option">
+            <input type="radio" name="q7" value="b"> DNA → Protein → RNA
+          </label>
+          <label class="option">
+            <input type="radio" name="q7" value="c"> DNA → RNA → Protein
+          </label>
+          <label class="option">
+            <input type="radio" name="q7" value="d"> RNA → DNA → Protein
+          </label>
+        </div>
+      </div>
+
+      <!-- Question 8 -->
+      <div class="question-card">
+        <div class="question-text">8. Which amino acid is hydrophobic and has a ring structure that breaks α-helices?</div>
+        <div class="options">
+          <label class="option">
+            <input type="radio" name="q8" value="a"> Glycine
+          </label>
+          <label class="option">
+            <input type="radio" name="q8" value="b"> Proline
+          </label>
+          <label class="option">
+            <input type="radio" name="q8" value="c"> Alanine
+          </label>
+          <label class="option">
+            <input type="radio" name="q8" value="d"> Leucine
+          </label>
+        </div>
+      </div>
+
+      <!-- Question 9 -->
+      <div class="question-card">
+        <div class="question-text">9. How many subunits does a hemoglobin molecule contain?</div>
+        <div class="options">
+          <label class="option">
+            <input type="radio" name="q9" value="a"> 2 subunits
+          </label>
+          <label class="option">
+            <input type="radio" name="q9" value="b"> 3 subunits
+          </label>
+          <label class="option">
+            <input type="radio" name="q9" value="c"> 4 subunits
+          </label>
+          <label class="option">
+            <input type="radio" name="q9" value="d"> 6 subunits
+          </label>
+        </div>
+      </div>
+
+      <!-- Question 10 -->
+      <div class="question-card">
+        <div class="question-text">10. What did DeepMind's AlphaFold achieve in 2020?</div>
+        <div class="options">
+          <label class="option">
+            <input type="radio" name="q10" value="a"> Crystallized the first protein
+          </label>
+          <label class="option">
+            <input type="radio" name="q10" value="b"> Predicted 3D protein structures from amino acid sequences with high accuracy
+          </label>
+          <label class="option">
+            <input type="radio" name="q10" value="c"> Discovered a new amino acid
+          </label>
+          <label class="option">
+            <input type="radio" name="q10" value="d"> Invented cryo-EM technique
+          </label>
+        </div>
+      </div>
+
+      <button type="submit" class="btn-submit">Submit Quiz</button>
+    </form>
+    
+    <div id="results" style="display:none;">
+      <h2 style="text-align:center;color:var(--cyan);margin-top:3rem;">Quiz Results</h2>
+      <div id="scoreDisplay" class="score"></div>
+      <div id="detailedResults"></div>
+      <button class="btn-primary" onclick="location.reload()" style="margin-top:2rem;display:block;margin-left:auto;margin-right:auto;">Retake Quiz</button>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="footer-title">⬡ Protein Structure Explorer — Advanced Edition</div>
+  <div class="footer-sub">
+    Made by [Your Name] · Biology Class 2024–25<br>
+    Sources: RCSB PDB · UniProt · NCBI · Lehninger Principles of Biochemistry 6th Ed · Alberts Molecular Biology of the Cell 6th Ed
+  </div>
+</footer>
+
+<script>
+const answers = {
+  q1: 'b',
+  q2: 'b',
+  q3: 'c',
+  q4: 'b',
+  q5: 'b',
+  q6: 'b',
+  q7: 'c',
+  q8: 'b',
+  q9: 'c',
+  q10: 'b'
+};
+
+function submitQuiz(event) {
+  event.preventDefault();
+  
+  let score = 0;
+  let total = Object.keys(answers).length;
+  
+  for (let i = 1; i <= total; i++) {
+    const questionName = 'q' + i;
+    const selected = document.querySelector('input[name="' + questionName + '"]:checked');
+    if (selected && selected.value === answers[questionName]) {
+      score++;
+      selected.parentElement.classList.add('correct');
+    } else if (selected) {
+      selected.parentElement.classList.add('incorrect');
+    }
+  }
+  
+  const percentage = Math.round((score / total) * 100);
+  
+  document.getElementById('quizForm').style.display = 'none';
+  document.getElementById('results').style.display = 'block';
+  document.getElementById('scoreDisplay').textContent = score + ' / ' + total + ' (' + percentage + '%)';
+}
+</script>
+
+<script src="script.js"></script>
+</body>
+</html>
+

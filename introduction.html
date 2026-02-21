@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Introduction to Proteins — Protein Structure Explorer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- ══ NAVBAR ══ -->
+<nav>
+  <a href="protein_structure.html" class="nav-logo">⬡ PROTEIN<span>EXPLORER</span></a>
+  <ul class="nav-links">
+
+    <!-- 1. PROTEINS -->
+    <li class="nav-item">
+      <a href="introduction.html">Proteins ▾</a>
+      <div class="mega-drop wide">
+        <div class="drop-col">
+          <div class="drop-col-title">Basics</div>
+          <a class="drop-item" href="introduction.html"><span class="drop-icon">🧬</span><span class="drop-text"><span class="dt">What Are Proteins?</span><span class="dd">Definition & history</span></span></a>
+          <a class="drop-item" href="amino-acids.html"><span class="drop-icon">⚗️</span><span class="drop-text"><span class="dt">Amino Acids</span><span class="dd">20 building blocks</span></span></a>
+          <a class="drop-item" href="introduction.html"><span class="drop-icon">🔗</span><span class="drop-text"><span class="dt">Peptide Bonds</span><span class="dd">Condensation chemistry</span></span></a>
+          <a class="drop-item" href="introduction.html"><span class="drop-icon">🌀</span><span class="drop-text"><span class="dt">Polypeptides</span><span class="dd">Chain formation</span></span></a>
+          <a class="drop-item" href="protein-synthesis.html"><span class="drop-icon">🏭</span><span class="drop-text"><span class="dt">Ribosomes</span><span class="dd">Protein factories</span></span></a>
+          <a class="drop-item" href="protein-synthesis.html"><span class="drop-icon">📐</span><span class="drop-text"><span class="dt">Central Dogma</span><span class="dd">DNA→RNA→Protein</span></span></a>
+        </div>
+        <div class="drop-col">
+          <div class="drop-col-title">Types</div>
+          <a class="drop-item" href="protein-families.html"><span class="drop-icon">⚡</span><span class="drop-text"><span class="dt">Enzymes</span><span class="dd">Biological catalysts</span></span></a>
+          <a class="drop-item" href="protein-families.html"><span class="drop-icon">💉</span><span class="drop-text"><span class="dt">Hormones</span><span class="dd">Chemical messengers</span></span></a>
+          <a class="drop-item" href="protein-families.html"><span class="drop-icon">🛡️</span><span class="drop-text"><span class="dt">Antibodies</span><span class="dd">Immune defenders</span></span></a>
+          <a class="drop-item" href="protein-families.html"><span class="drop-icon">🚌</span><span class="drop-text"><span class="dt">Transport</span><span class="dd">Hemoglobin, albumin</span></span></a>
+          <a class="drop-item" href="protein-families.html"><span class="drop-icon">🏗️</span><span class="drop-text"><span class="dt">Structural</span><span class="dd">Collagen, keratin</span></span></a>
+          <a class="drop-item" href="protein-families.html"><span class="drop-icon">🏃</span><span class="drop-text"><span class="dt">Motor Proteins</span><span class="dd">Myosin, kinesin</span></span></a>
+        </div>
+        <div class="drop-col">
+          <div class="drop-col-title">Functions</div>
+          <a class="drop-item" href="protein-families.html"><span class="drop-icon">🔬</span><span class="drop-text"><span class="dt">Catalysis</span><span class="dd">Enzyme mechanisms</span></span></a>
+          <a class="drop-item" href="introduction.html"><span class="drop-icon">📡</span><span class="drop-text"><span class="dt">Cell Signaling</span><span class="dd">Receptors & cascades</span></span></a>
+          <a class="drop-item" href="protein-synthesis.html"><span class="drop-icon">🧬</span><span class="drop-text"><span class="dt">DNA Replication</span><span class="dd">Polymerases</span></span></a>
+          <a class="drop-item" href="protein-families.html"><span class="drop-icon">💪</span><span class="drop-text"><span class="dt">Muscle Contraction</span><span class="dd">Actin–myosin cycle</span></span></a>
+          <a class="drop-item" href="diseases.html"><span class="drop-icon">🦠</span><span class="drop-text"><span class="dt">Immune Defense</span><span class="dd">Antibodies & MHC</span></span></a>
+          <a class="drop-item" href="protein-families.html"><span class="drop-icon">🩸</span><span class="drop-text"><span class="dt">O₂ Transport</span><span class="dd">Hemoglobin & myoglobin</span></span></a>
+        </div>
+      </div>
+    </li>
+
+    <!-- 2. STRUCTURE LEVELS -->
+    <li class="nav-item">
+      <a href="protein-structure-levels.html">Structure ▾</a>
+      <div class="mega-drop">
+        <div class="drop-col">
+          <div class="drop-col-title">4 Levels</div>
+          <a class="drop-item" href="protein-structure-levels.html"><span class="drop-icon">①</span><span class="drop-text"><span class="dt">Primary</span><span class="dd">Amino acid sequence</span></span></a>
+          <a class="drop-item" href="protein-structure-levels.html"><span class="drop-icon">②</span><span class="drop-text"><span class="dt">Secondary</span><span class="dd">α-helices & β-sheets</span></span></a>
+          <a class="drop-item" href="protein-structure-levels.html"><span class="drop-icon">③</span><span class="drop-text"><span class="dt">Tertiary</span><span class="dd">3D globular fold</span></span></a>
+          <a class="drop-item" href="protein-structure-levels.html"><span class="drop-icon">④</span><span class="drop-text"><span class="dt">Quaternary</span><span class="dd">Multi-subunit complexes</span></span></a>
+        </div>
+        <div class="drop-col">
+          <div class="drop-col-title">Key Concepts</div>
+          <a class="drop-item" href="protein-structure-levels.html"><span class="drop-icon">🔄</span><span class="drop-text"><span class="dt">H-Bonds</span><span class="dd">Backbone interactions</span></span></a>
+          <a class="drop-item" href="protein-structure-levels.html"><span class="drop-icon">💧</span><span class="drop-text"><span class="dt">Hydrophobic Core</span><span class="dd">Driving force for folding</span></span></a>
+          <a class="drop-item" href="protein-structure-levels.html"><span class="drop-icon">⚙️</span><span class="drop-text"><span class="dt">Disulfide Bonds</span><span class="dd">Covalent stabilization</span></span></a>
+          <a class="drop-item" href="protein-structure-levels.html"><span class="drop-icon">📊</span><span class="drop-text"><span class="dt">Ramachandran Plot</span><span class="dd">Allowed φ/ψ angles</span></span></a>
+        </div>
+      </div>
+    </li>
+
+    <!-- 3. 3D MODELS -->
+    <li class="nav-item">
+      <a href="3d-models.html">3D Models ▾</a>
+      <div class="mega-drop wide">
+        <div class="drop-col">
+          <div class="drop-col-title">Basic</div>
+          <a class="drop-item" href="3d-models.html"><span class="drop-icon">🔵</span><span class="drop-text"><span class="dt">Primary Chain</span><span class="dd">Polypeptide backbone</span></span></a>
+          <a class="drop-item" href="3d-models.html"><span class="drop-icon">🌀</span><span class="drop-text"><span class="dt">Alpha-Helix</span><span class="dd">Right-handed coil</span></span></a>
+          <a class="drop-item" href="3d-models.html"><span class="drop-icon">📋</span><span class="drop-text"><span class="dt">Beta-Sheet</span><span class="dd">Parallel/antiparallel strands</span></span></a>
+          <a class="drop-item" href="3d-models.html"><span class="drop-icon">🔮</span><span class="drop-text"><span class="dt">Tertiary Fold</span><span class="dd">Globular 3D fold</span></span></a>
+        </div>
+        <div class="drop-col">
+          <div class="drop-col-title">Classic</div>
+          <a class="drop-item" href="3d-models.html"><span class="drop-icon">🩸</span><span class="drop-text"><span class="dt">Hemoglobin</span><span class="dd">Heterotetramer</span></span></a>
+          <a class="drop-item" href="3d-models.html"><span class="drop-icon">🦴</span><span class="drop-text"><span class="dt">Collagen</span><span class="dd">Triple helix</span></span></a>
+          <a class="drop-item" href="3d-models.html"><span class="drop-icon">💉</span><span class="drop-text"><span class="dt">Insulin</span><span class="dd">Disulfide-linked chains</span></span></a>
+          <a class="drop-item" href="3d-models.html"><span class="drop-icon">🏋️</span><span class="drop-text"><span class="dt">Myoglobin</span><span class="dd">O₂-binding globin</span></span></a>
+        </div>
+        <div class="drop-col">
+          <div class="drop-col-title">Machines</div>
+          <a class="drop-item" href="3d-models.html"><span class="drop-icon">⚡</span><span class="drop-text"><span class="dt">ATP Synthase</span><span class="dd">Rotary motor</span></span></a>
+          <a class="drop-item" href="3d-models.html"><span class="drop-icon">🏭</span><span class="drop-text"><span class="dt">Ribosome</span><span class="dd">Protein factory</span></span></a>
+          <a class="drop-item" href="3d-models.html"><span class="drop-icon">Y️</span><span class="drop-text"><span class="dt">Antibody IgG</span><span class="dd">Y-shaped immune protein</span></span></a>
+          <a class="drop-item" href="3d-models.html"><span class="drop-icon">🗑️</span><span class="drop-text"><span class="dt">Proteasome</span><span class="dd">Protein degrader</span></span></a>
+        </div>
+      </div>
+    </li>
+
+    <!-- 4. FAMILIES -->
+    <li class="nav-item">
+      <a href="protein-families.html">Families ▾</a>
+      <div class="mega-drop">
+        <div class="drop-col">
+          <div class="drop-col-title">Categories</div>
+          <a class="drop-item" href="protein-families.html"><span class="drop-icon">⚽</span><span class="drop-text"><span class="dt">Globular</span><span class="dd">Compact & soluble</span></span></a>
+          <a class="drop-item" href="protein-families.html"><span class="drop-icon">🧵</span><span class="drop-text"><span class="dt">Fibrous</span><span class="dd">Structural filaments</span></span></a>
+          <a class="drop-item" href="protein-families.html"><span class="drop-icon">🫧</span><span class="drop-text"><span class="dt">Membrane</span><span class="dd">Embedded in bilayer</span></span></a>
+          <a class="drop-item" href="protein-families.html"><span class="drop-icon">🌊</span><span class="drop-text"><span class="dt">Disordered</span><span class="dd">No fixed structure</span></span></a>
+        </div>
+        <div class="drop-col">
+          <div class="drop-col-title">Specialized</div>
+          <a class="drop-item" href="protein-families.html"><span class="drop-icon">🔧</span><span class="drop-text"><span class="dt">Enzymes</span><span class="dd">6 EC classes</span></span></a>
+          <a class="drop-item" href="protein-families.html"><span class="drop-icon">🛡️</span><span class="drop-text"><span class="dt">Antibodies</span><span class="dd">5 immunoglobulin classes</span></span></a>
+          <a class="drop-item" href="protein-families.html"><span class="drop-icon">🏃</span><span class="drop-text"><span class="dt">Motor Proteins</span><span class="dd">Myosin, kinesin, dynein</span></span></a>
+          <a class="drop-item" href="protein-families.html"><span class="drop-icon">🫂</span><span class="drop-text"><span class="dt">Chaperones</span><span class="dd">Folding assistants</span></span></a>
+        </div>
+      </div>
+    </li>
+
+    <!-- 5. DISEASES -->
+    <li class="nav-item">
+      <a href="diseases.html">Diseases ▾</a>
+      <div class="mega-drop">
+        <div class="drop-col">
+          <div class="drop-col-title">Misfolding</div>
+          <a class="drop-item" href="diseases.html"><span class="drop-icon">🧠</span><span class="drop-text"><span class="dt">Alzheimer's</span><span class="dd">Aβ plaques + tau tangles</span></span></a>
+          <a class="drop-item" href="diseases.html"><span class="drop-icon">🤝</span><span class="drop-text"><span class="dt">Parkinson's</span><span class="dd">α-synuclein Lewy bodies</span></span></a>
+          <a class="drop-item" href="diseases.html"><span class="drop-icon">👻</span><span class="drop-text"><span class="dt">Prion Diseases</span><span class="dd">PrPc → PrPsc</span></span></a>
+        </div>
+        <div class="drop-col">
+          <div class="drop-col-title">Genetic</div>
+          <a class="drop-item" href="diseases.html"><span class="drop-icon">🩸</span><span class="drop-text"><span class="dt">Sickle Cell</span><span class="dd">Glu6Val in β-globin</span></span></a>
+          <a class="drop-item" href="diseases.html"><span class="drop-icon">🫁</span><span class="drop-text"><span class="dt">Cystic Fibrosis</span><span class="dd">CFTR mutations</span></span></a>
+          <a class="drop-item" href="diseases.html"><span class="drop-icon">🦴</span><span class="drop-text"><span class="dt">Osteogenesis Imperfecta</span><span class="dd">Defective collagen</span></span></a>
+          <a class="drop-item" href="diseases.html"><span class="drop-icon">🧬</span><span class="drop-text"><span class="dt">PKU</span><span class="dd">Phenylalanine accumulation</span></span></a>
+        </div>
+      </div>
+    </li>
+
+    <!-- 6. TECHNIQUES -->
+    <li class="nav-item">
+      <a href="techniques.html">Techniques ▾</a>
+      <div class="mega-drop">
+        <div class="drop-col">
+          <div class="drop-col-title">Structural</div>
+          <a class="drop-item" href="techniques.html"><span class="drop-icon">💎</span><span class="drop-text"><span class="dt">X-Ray Crystallography</span><span class="dd">Atomic resolution</span></span></a>
+          <a class="drop-item" href="techniques.html"><span class="drop-icon">🧲</span><span class="drop-text"><span class="dt">NMR Spectroscopy</span><span class="dd">Solution structures</span></span></a>
+          <a class="drop-item" href="techniques.html"><span class="drop-icon">❄️</span><span class="drop-text"><span class="dt">Cryo-EM</span><span class="dd">Resolution revolution</span></span></a>
+          <a class="drop-item" href="techniques.html"><span class="drop-icon">🤖</span><span class="drop-text"><span class="dt">AlphaFold AI</span><span class="dd">AI structure prediction</span></span></a>
+        </div>
+        <div class="drop-col">
+          <div class="drop-col-title">Analytical</div>
+          <a class="drop-item" href="techniques.html"><span class="drop-icon">⚖️</span><span class="drop-text"><span class="dt">Mass Spectrometry</span><span class="dd">Protein identification</span></span></a>
+          <a class="drop-item" href="techniques.html"><span class="drop-icon">🌈</span><span class="drop-text"><span class="dt">CD Spectroscopy</span><span class="dd">Secondary structure</span></span></a>
+          <a class="drop-item" href="techniques.html"><span class="drop-icon">💡</span><span class="drop-text"><span class="dt">FRET</span><span class="dd">Molecular distances</span></span></a>
+          <a class="drop-item" href="techniques.html"><span class="drop-icon">🧫</span><span class="drop-text"><span class="dt">SDS-PAGE/Western</span><span class="dd">Size separation</span></span></a>
+        </div>
+      </div>
+    </li>
+
+    <!-- 7. DATABASE -->
+    <li class="nav-item">
+      <a href="pdb.html">Database ▾</a>
+      <div class="mega-drop">
+        <div class="drop-col">
+          <div class="drop-col-title">Databases</div>
+          <a class="drop-item" href="pdb.html"><span class="drop-icon">🏛️</span><span class="drop-text"><span class="dt">Protein Data Bank</span><span class="dd">200K+ structures</span></span></a>
+          <a class="drop-item" href="pdb.html"><span class="drop-icon">🤖</span><span class="drop-text"><span class="dt">AlphaFold DB</span><span class="dd">200M+ predictions</span></span></a>
+          <a class="drop-item" href="pdb.html"><span class="drop-icon">📚</span><span class="drop-text"><span class="dt">UniProt</span><span class="dd">Protein knowledgebase</span></span></a>
+          <a class="drop-item" href="pdb.html"><span class="drop-icon">🔬</span><span class="drop-text"><span class="dt">NCBI Protein</span><span class="dd">Sequence database</span></span></a>
+        </div>
+        <div class="drop-col">
+          <div class="drop-col-title">Tools</div>
+          <a class="drop-item" href="pdb.html"><span class="drop-icon">🖥️</span><span class="drop-text"><span class="dt">PyMOL</span><span class="dd">Structure visualization</span></span></a>
+          <a class="drop-item" href="pdb.html"><span class="drop-icon">💻</span><span class="drop-text"><span class="dt">BLAST</span><span class="dd">Sequence alignment</span></span></a>
+          <a class="drop-item" href="pdb.html"><span class="drop-icon">🌐</span><span class="drop-text"><span class="dt">Mol* Viewer</span><span class="dd">Web-based 3D viewer</span></span></a>
+          <a class="drop-item" href="pdb.html"><span class="drop-icon">🧮</span><span class="drop-text"><span class="dt">Clustal Omega</span><span class="dd">Multiple alignment</span></span></a>
+        </div>
+      </div>
+    </li>
+
+    <!-- 8. RESOURCES -->
+    <li class="nav-item">
+      <a href="quiz.html">Resources ▾</a>
+      <div class="mega-drop">
+        <div class="drop-col">
+          <div class="drop-col-title">Self-Test & Reference</div>
+          <a class="drop-item" href="quiz.html"><span class="drop-icon">❓</span><span class="drop-text"><span class="dt">10-Question Quiz</span><span class="dd">Test your knowledge</span></span></a>
+          <a class="drop-item" href="glossary.html"><span class="drop-icon">📖</span><span class="drop-text"><span class="dt">Glossary A–Z</span><span class="dd">60+ searchable terms</span></span></a>
+          <a class="drop-item" href="protein-families.html"><span class="drop-icon">🔍</span><span class="drop-text"><span class="dt">Protein Profiles</span><span class="dd">10 case studies</span></span></a>
+          <a class="drop-item" href="evolution.html"><span class="drop-icon">🧫</span><span class="drop-text"><span class="dt">Bioinformatics</span><span class="dd">Evolution & tools</span></span></a>
+        </div>
+      </div>
+    </li>
+
+  </ul>
+</nav>
+
+<!-- ══ PAGE HEADER ══ -->
+<div class="page-header">
+  <div>
+    <a href="protein_structure.html" class="back-btn">← Back to Home</a>
+    <h1>Introduction to <span style="color:var(--cyan)">Proteins</span></h1>
+    <p>Proteins are macromolecules composed of amino acids linked by peptide bonds. They perform virtually every biological function in living organisms, from catalyzing reactions to providing structure and movement.</p>
+  </div>
+</div>
+
+<section>
+  <div class="section-inner">
+    <h2 class="section-title">What Are <span>Proteins?</span></h2>
+    <div class="section-divider"></div>
+    
+    <p style="color:var(--text-dim);font-size:1.05rem;margin-bottom:2rem;">
+      Proteins are essential polymers made up of amino acids. Each protein has a specific three-dimensional structure that determines its function. The human body contains approximately 100,000 different proteins, and proteins make up about 50% of the dry mass of our cells.
+    </p>
+    
+    <div class="cards-grid">
+      <div class="content-card">
+        <h3>Definition</h3>
+        <p>Proteins are polymeric macromolecules made of amino acids covalently joined by peptide bonds. They are one of the four major groups of biological macromolecules (along with carbohydrates, lipids, and nucleic acids). Nearly all cellular processes depend on protein action.</p>
+      </div>
+      
+      <div class="content-card">
+        <h3>Etymology</h3>
+        <p>The word "protein" comes from the Greek word "proteios," meaning "of first importance." This name was given in 1838 by the Swedish chemist Jöns Jacob Berzelius, reflecting the critical role proteins play in biology.</p>
+      </div>
+      
+      <div class="content-card">
+        <h3>Composition</h3>
+        <p>Proteins are primarily composed of carbon, hydrogen, nitrogen, and oxygen. Some proteins also contain sulfur (in methionine and cysteine), and specialized proteins may contain metals like iron, zinc, or magnesium as cofactors.</p>
+      </div>
+      
+      <div class="content-card">
+        <h3>Molecular Weight</h3>
+        <p>Protein sizes vary greatly. Small peptides contain just a few amino acids, while large proteins like titin can contain over 27,000 amino acids and have molecular weights exceeding 3 million Daltons. Most functional proteins contain 50-2000 amino acids.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-sep"></div>
+
+<section>
+  <div class="section-inner">
+    <h2 class="section-title">Major Functions of <span>Proteins</span></h2>
+    <div class="section-divider"></div>
+    
+    <div class="cards-grid">
+      <div class="content-card">
+        <h3>⚡ Enzymatic Catalysis</h3>
+        <p>Enzymes are proteins that speed up chemical reactions. They work by lowering activation energy and stabilizing transition states. Over 4,000 different enzymes have been identified, each catalyzing specific reactions essential for metabolism.</p>
+      </div>
+      
+      <div class="content-card">
+        <h3>🛡️ Immunity</h3>
+        <p>Antibodies (immunoglobulins) are proteins that recognize and neutralize foreign pathogens. The immune system produces millions of different antibodies, each specific to particular antigens, providing defense against bacteria, viruses, and other threats.</p>
+      </div>
+      
+      <div class="content-card">
+        <h3>🏗️ Structural Support</h3>
+        <p>Proteins like collagen, keratin, and elastin provide mechanical strength and structure to tissues. Collagen is the most abundant protein in the human body, making up 30% of total protein mass and providing tensile strength to skin, bones, and tendons.</p>
+      </div>
+      
+      <div class="content-card">
+        <h3>🚌 Transport</h3>
+        <p>Transport proteins carry molecules throughout the body. Hemoglobin transports oxygen from lungs to tissues, albumin carries fatty acids and hormones, and channel proteins facilitate the movement of ions across cell membranes.</p>
+      </div>
+      
+      <div class="content-card">
+        <h3>💪 Muscular Contraction</h3>
+        <p>Myosin and actin are motor proteins that interact to produce muscle contractions. The sliding filament model explains how these proteins generate force through repeated binding and release cycles powered by ATP hydrolysis.</p>
+      </div>
+      
+      <div class="content-card">
+        <h3>📡 Cell Signaling</h3>
+        <p>Hormones like insulin and adrenaline are signaling proteins that coordinate cellular and physiological processes. Receptors are membrane proteins that receive these signals and trigger intracellular cascades leading to specific cellular responses.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-sep"></div>
+
+<section>
+  <div class="section-inner">
+    <h2 class="section-title">Historical <span>Development</span></h2>
+    <div class="section-divider"></div>
+    
+    <div class="cards-grid">
+      <div class="content-card">
+        <h3>1600s-1700s: Early Observations</h3>
+        <p>Early scientists observed that blood and egg whites contained fibrous materials. However, these were not systematically studied until the 19th century. The chemical complexity of these substances made them difficult to analyze with available techniques.</p>
+      </div>
+      
+      <div class="content-card">
+        <h3>1838: Berzelius Names "Proteins"</h3>
+        <p>Swedish chemist Jöns Jacob Berzelius coins the term "proteios" (of utmost importance). This reflects the recognition that these substances are fundamental to life and deserving of serious scientific study.</p>
+      </div>
+      
+      <div class="content-card">
+        <h3>1869: Discovery of Amino Acids</h3>
+        <p>Friedrich Miescher discovers that proteins are composed of simpler building blocks. Gustav von Bunge and others begin identifying individual amino acids, laying the groundwork for understanding protein composition.</p>
+      </div>
+      
+      <div class="content-card">
+        <h3>1902: Peptide Bond Theory</h3>
+        <p>Emil Fischer and Franz Hofmeister propose that amino acids are linked by peptide bonds (peptide linkages). This provides the theoretical foundation for understanding protein structure and leads to systematic research into protein chemistry.</p>
+      </div>
+      
+      <div class="content-card">
+        <h3>1951: Secondary Structure</h3>
+        <p>Linus Pauling and Robert Corey predict the α-helix and β-sheet structures using X-ray crystallography data and hydrogen bonding principles. These predictions are later confirmed and revolutionize our understanding of protein architecture.</p>
+      </div>
+      
+      <div class="content-card">
+        <h3>1958: First Protein Structure</h3>
+        <p>Max Perutz uses X-ray crystallography to determine the 3D structure of hemoglobin, earning the Nobel Prize. This milestone demonstrates the feasibility of solving protein structures and establishes structural biology as a field.</p>
+      </div>
+      
+      <div class="content-card">
+        <h3>1975: Recombinant DNA</h3>
+        <p>Development of recombinant DNA technology enables scientists to produce proteins in large quantities. Genetic engineering allows modification of proteins for research, medicine, and industry.</p>
+      </div>
+      
+      <div class="content-card">
+        <h3>2020s: AlphaFold AI</h3>
+        <p>DeepMind's AlphaFold uses machine learning to predict 3D protein structures from amino acid sequences with remarkable accuracy. This breakthrough democratizes protein structure prediction and accelerates biological research worldwide.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-sep"></div>
+
+<section>
+  <div class="section-inner">
+    <h2 class="section-title">Key Concepts <span>in Protein Biology</span></h2>
+    <div class="section-divider"></div>
+    
+    <p style="color:var(--text-dim);font-size:1.05rem;margin-bottom:2rem;">
+      Understanding proteins requires knowledge of several fundamental concepts:
+    </p>
+    
+    <div class="cards-grid">
+      <div class="content-card">
+        <h3>Amino Acid Sequence</h3>
+        <p>The primary structure is determined by the precise order of amino acids (N-terminus to C-terminus). The sequence is encoded in DNA and determines all higher-level structures. Even a single amino acid substitution can cause disease (like sickle cell anemia).</p>
+      </div>
+      
+      <div class="content-card">
+        <h3>Hydrophobic Effect</h3>
+        <p>Hydrophobic amino acids cluster in the protein core to minimize contact with water, while hydrophilic residues are typically on the surface. This effect is the primary driving force for protein folding into their native three-dimensional structures.</p>
+      </div>
+      
+      <div class="content-card">
+        <h3>Denaturation</h3>
+        <p>Proteins can lose their structure through heat, pH changes, organic solvents, or mechanical disruption. When denatured, proteins cannot perform their functions. Renaturation is possible for some proteins but difficult for others, especially large multimeric complexes.</p>
+      </div>
+      
+      <div class="content-card">
+        <h3>Post-Translational Modifications</h3>
+        <p>After synthesis, proteins undergo modifications: phosphorylation, glycosylation, ubiquitination, and others. These modifications regulate protein activity, localization, and stability, and are critical for cellular signaling.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="footer-title">⬡ Protein Structure Explorer — Advanced Edition</div>
+  <div class="footer-sub">
+    Made by [Your Name] · Biology Class 2024–25<br>
+    Sources: RCSB PDB · UniProt · NCBI · Lehninger Principles of Biochemistry 6th Ed · Alberts Molecular Biology of the Cell 6th Ed
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
+

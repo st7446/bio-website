@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Biology Glossary — Protein Structure Explorer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+.glossary-container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.search-box {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 50px;
+  padding: 1rem 1.5rem;
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.search-box input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 1rem;
+  font-family: Rajdhani;
+  outline: none;
+}
+
+.search-box input::placeholder {
+  color: rgba(255,255,255,0.5);
+}
+
+.glossary-item {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.glossary-item:hover {
+  border-color: var(--cyan);
+  background: rgba(0,245,255,0.05);
+}
+
+.glossary-term {
+  font-weight: 700;
+  color: var(--cyan);
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.glossary-definition {
+  color: rgba(255,255,255,0.9);
+  line-height: 1.6;
+  display: none;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+}
+
+.glossary-item.active .glossary-definition {
+  display: block;
+}
+
+.toggle-icon {
+  transition: transform 0.3s;
+}
+
+.glossary-item.active .toggle-icon {
+  transform: rotate(180deg);
+}
+
+.category-label {
+  font-size: 0.8rem;
+  background: rgba(0,245,255,0.1);
+  color: var(--cyan);
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  display: inline-block;
+  margin-left: auto;
+}
+
+@media (max-width: 768px) {
+  .search-box {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .search-box input {
+    width: 100%;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- ══ NAVBAR ══ -->
+<nav>
+  <a href="protein_structure.html" class="nav-logo">⬡ PROTEIN<span>EXPLORER</span></a>
+  <ul class="nav-links">
+
+    <!-- 1. PROTEINS -->
+    <li class="nav-item">
+      <a href="introduction.html">Proteins ▾</a>
+      <div class="mega-drop wide">
+        <div class="drop-col">
+          <div class="drop-col-title">Basics</div>
+          <a class="drop-item" href="introduction.html"><span class="drop-icon">🧬</span><span class="drop-text"><span class="dt">What Are Proteins?</span><span class="dd">Definition & history</span></span></a>
+          <a class="drop-item" href="amino-acids.html"><span class="drop-icon">⚗️</span><span class="drop-text"><span class="dt">Amino Acids</span><span class="dd">20 building blocks</span></span></a>
+          <a class="drop-item" href="introduction.html"><span class="drop-icon">🔗</span><span class="drop-text"><span class="dt">Peptide Bonds</span><span class="dd">Condensation chemistry</span></span></a>
+          <a class="drop-item" href="introduction.html"><span class="drop-icon">🌀</span><span class="drop-text"><span class="dt">Polypeptides</span><span class="dd">Chain formation</span></span></a>
+          <a class="drop-item" href="protein-synthesis.html"><span class="drop-icon">🏭</span><span class="drop-text"><span class="dt">Ribosomes</span><span class="dd">Protein factories</span></span></a>
+          <a class="drop-item" href="protein-synthesis.html"><span class="drop-icon">📐</span><span class="drop-text"><span class="dt">Central Dogma</span><span class="dd">DNA→RNA→Protein</span></span></a>
+        </div>
+        <div class="drop-col">
+          <div class="drop-col-title">Types</div>
+          <a class="drop-item" href="protein-families.html"><span class="drop-icon">⚡</span><span class="drop-text"><span class="dt">Enzymes</span><span class="dd">Biological catalysts</span></span></a>
+          <a class="drop-item" href="protein-families.html"><span class="drop-icon">💉</span><span class="drop-text"><span class="dt">Hormones</span><span class="dd">Chemical messengers</span></span></a>
+          <a class="drop-item" href="protein-families.html"><span class="drop-icon">🛡️</span><span class="drop-text"><span class="dt">Antibodies</span><span class="dd">Immune defenders</span></span></a>
+          <a class="drop-item" href="protein-families.html"><span class="drop-icon">🚌</span><span class="drop-text"><span class="dt">Transport</span><span class="dd">Hemoglobin, albumin</span></span></a>
+          <a class="drop-item" href="protein-families.html"><span class="drop-icon">🏗️</span><span class="drop-text"><span class="dt">Structural</span><span class="dd">Collagen, keratin</span></span></a>
+          <a class="drop-item" href="protein-families.html"><span class="drop-icon">🏃</span><span class="drop-text"><span class="dt">Motor Proteins</span><span class="dd">Myosin, kinesin</span></span></a>
+        </div>
+        <div class="drop-col">
+          <div class="drop-col-title">Functions</div>
+          <a class="drop-item" href="protein-families.html"><span class="drop-icon">🔬</span><span class="drop-text"><span class="dt">Catalysis</span><span class="dd">Enzyme mechanisms</span></span></a>
+          <a class="drop-item" href="introduction.html"><span class="drop-icon">📡</span><span class="drop-text"><span class="dt">Cell Signaling</span><span class="dd">Receptors & cascades</span></span></a>
+          <a class="drop-item" href="protein-synthesis.html"><span class="drop-icon">🧬</span><span class="drop-text"><span class="dt">DNA Replication</span><span class="dd">Polymerases</span></span></a>
+          <a class="drop-item" href="protein-families.html"><span class="drop-icon">💪</span><span class="drop-text"><span class="dt">Muscle Contraction</span><span class="dd">Actin–myosin cycle</span></span></a>
+          <a class="drop-item" href="diseases.html"><span class="drop-icon">🦠</span><span class="drop-text"><span class="dt">Immune Defense</span><span class="dd">Antibodies & MHC</span></span></a>
+          <a class="drop-item" href="protein-families.html"><span class="drop-icon">🩸</span><span class="drop-text"><span class="dt">O₂ Transport</span><span class="dd">Hemoglobin & myoglobin</span></span></a>
+        </div>
+      </div>
+    </li>
+
+    <!-- 2. STRUCTURE LEVELS -->
+    <li class="nav-item">
+      <a href="protein-structure-levels.html">Structure ▾</a>
+      <div class="mega-drop">
+        <div class="drop-col">
+          <div class="drop-col-title">4 Levels</div>
+          <a class="drop-item" href="protein-structure-levels.html"><span class="drop-icon">①</span><span class="drop-text"><span class="dt">Primary</span><span class="dd">Amino acid sequence</span></span></a>
+          <a class="drop-item" href="protein-structure-levels.html"><span class="drop-icon">②</span><span class="drop-text"><span class="dt">Secondary</span><span class="dd">α-helices & β-sheets</span></span></a>
+          <a class="drop-item" href="protein-structure-levels.html"><span class="drop-icon">③</span><span class="drop-text"><span class="dt">Tertiary</span><span class="dd">3D globular fold</span></span></a>
+          <a class="drop-item" href="protein-structure-levels.html"><span class="drop-icon">④</span><span class="drop-text"><span class="dt">Quaternary</span><span class="dd">Multi-subunit complexes</span></span></a>
+        </div>
+        <div class="drop-col">
+          <div class="drop-col-title">Key Concepts</div>
+          <a class="drop-item" href="protein-structure-levels.html"><span class="drop-icon">🔄</span><span class="drop-text"><span class="dt">H-Bonds</span><span class="dd">Backbone interactions</span></span></a>
+          <a class="drop-item" href="protein-structure-levels.html"><span class="drop-icon">💧</span><span class="drop-text"><span class="dt">Hydrophobic Core</span><span class="dd">Driving force for folding</span></span></a>
+          <a class="drop-item" href="protein-structure-levels.html"><span class="drop-icon">⚙️</span><span class="drop-text"><span class="dt">Disulfide Bonds</span><span class="dd">Covalent stabilization</span></span></a>
+          <a class="drop-item" href="protein-structure-levels.html"><span class="drop-icon">📊</span><span class="drop-text"><span class="dt">Ramachandran Plot</span><span class="dd">Allowed φ/ψ angles</span></span></a>
+        </div>
+      </div>
+    </li>
+
+    <!-- 3. 3D MODELS -->
+    <li class="nav-item">
+      <a href="3d-models.html">3D Models ▾</a>
+      <div class="mega-drop wide">
+        <div class="drop-col">
+          <div class="drop-col-title">Basic</div>
+          <a class="drop-item" href="3d-models.html"><span class="drop-icon">🔵</span><span class="drop-text"><span class="dt">Primary Chain</span><span class="dd">Polypeptide backbone</span></span></a>
+          <a class="drop-item" href="3d-models.html"><span class="drop-icon">🌀</span><span class="drop-text"><span class="dt">Alpha-Helix</span><span class="dd">Right-handed coil</span></span></a>
+          <a class="drop-item" href="3d-models.html"><span class="drop-icon">📋</span><span class="drop-text"><span class="dt">Beta-Sheet</span><span class="dd">Parallel/antiparallel strands</span></span></a>
+          <a class="drop-item" href="3d-models.html"><span class="drop-icon">🔮</span><span class="drop-text"><span class="dt">Tertiary Fold</span><span class="dd">Globular 3D fold</span></span></a>
+        </div>
+        <div class="drop-col">
+          <div class="drop-col-title">Classic</div>
+          <a class="drop-item" href="3d-models.html"><span class="drop-icon">🩸</span><span class="drop-text"><span class="dt">Hemoglobin</span><span class="dd">Heterotetramer</span></span></a>
+          <a class="drop-item" href="3d-models.html"><span class="drop-icon">🦴</span><span class="drop-text"><span class="dt">Collagen</span><span class="dd">Triple helix</span></span></a>
+          <a class="drop-item" href="3d-models.html"><span class="drop-icon">💉</span><span class="drop-text"><span class="dt">Insulin</span><span class="dd">Disulfide-linked chains</span></span></a>
+          <a class="drop-item" href="3d-models.html"><span class="drop-icon">🏋️</span><span class="drop-text"><span class="dt">Myoglobin</span><span class="dd">O₂-binding globin</span></span></a>
+        </div>
+        <div class="drop-col">
+          <div class="drop-col-title">Machines</div>
+          <a class="drop-item" href="3d-models.html"><span class="drop-icon">⚡</span><span class="drop-text"><span class="dt">ATP Synthase</span><span class="dd">Rotary motor</span></span></a>
+          <a class="drop-item" href="3d-models.html"><span class="drop-icon">🏭</span><span class="drop-text"><span class="dt">Ribosome</span><span class="dd">Protein factory</span></span></a>
+          <a class="drop-item" href="3d-models.html"><span class="drop-icon">Y️</span><span class="drop-text"><span class="dt">Antibody IgG</span><span class="dd">Y-shaped immune protein</span></span></a>
+          <a class="drop-item" href="3d-models.html"><span class="drop-icon">🗑️</span><span class="drop-text"><span class="dt">Proteasome</span><span class="dd">Protein degrader</span></span></a>
+        </div>
+      </div>
+    </li>
+
+    <!-- 4. FAMILIES -->
+    <li class="nav-item">
+      <a href="protein-families.html">Families ▾</a>
+      <div class="mega-drop">
+        <div class="drop-col">
+          <div class="drop-col-title">Categories</div>
+          <a class="drop-item" href="protein-families.html"><span class="drop-icon">⚽</span><span class="drop-text"><span class="dt">Globular</span><span class="dd">Compact & soluble</span></span></a>
+          <a class="drop-item" href="protein-families.html"><span class="drop-icon">🧵</span><span class="drop-text"><span class="dt">Fibrous</span><span class="dd">Structural filaments</span></span></a>
+          <a class="drop-item" href="protein-families.html"><span class="drop-icon">🫧</span><span class="drop-text"><span class="dt">Membrane</span><span class="dd">Embedded in bilayer</span></span></a>
+          <a class="drop-item" href="protein-families.html"><span class="drop-icon">🌊</span><span class="drop-text"><span class="dt">Disordered</span><span class="dd">No fixed structure</span></span></a>
+        </div>
+        <div class="drop-col">
+          <div class="drop-col-title">Specialized</div>
+          <a class="drop-item" href="protein-families.html"><span class="drop-icon">🔧</span><span class="drop-text"><span class="dt">Enzymes</span><span class="dd">6 EC classes</span></span></a>
+          <a class="drop-item" href="protein-families.html"><span class="drop-icon">🛡️</span><span class="drop-text"><span class="dt">Antibodies</span><span class="dd">5 immunoglobulin classes</span></span></a>
+          <a class="drop-item" href="protein-families.html"><span class="drop-icon">🏃</span><span class="drop-text"><span class="dt">Motor Proteins</span><span class="dd">Myosin, kinesin, dynein</span></span></a>
+          <a class="drop-item" href="protein-families.html"><span class="drop-icon">🫂</span><span class="drop-text"><span class="dt">Chaperones</span><span class="dd">Folding assistants</span></span></a>
+        </div>
+      </div>
+    </li>
+
+    <!-- 5. DISEASES -->
+    <li class="nav-item">
+      <a href="diseases.html">Diseases ▾</a>
+      <div class="mega-drop">
+        <div class="drop-col">
+          <div class="drop-col-title">Misfolding</div>
+          <a class="drop-item" href="diseases.html"><span class="drop-icon">🧠</span><span class="drop-text"><span class="dt">Alzheimer's</span><span class="dd">Aβ plaques + tau tangles</span></span></a>
+          <a class="drop-item" href="diseases.html"><span class="drop-icon">🤝</span><span class="drop-text"><span class="dt">Parkinson's</span><span class="dd">α-synuclein Lewy bodies</span></span></a>
+          <a class="drop-item" href="diseases.html"><span class="drop-icon">👻</span><span class="drop-text"><span class="dt">Prion Diseases</span><span class="dd">PrPc → PrPsc</span></span></a>
+        </div>
+        <div class="drop-col">
+          <div class="drop-col-title">Genetic</div>
+          <a class="drop-item" href="diseases.html"><span class="drop-icon">🩸</span><span class="drop-text"><span class="dt">Sickle Cell</span><span class="dd">Glu6Val in β-globin</span></span></a>
+          <a class="drop-item" href="diseases.html"><span class="drop-icon">🫁</span><span class="drop-text"><span class="dt">Cystic Fibrosis</span><span class="dd">CFTR mutations</span></span></a>
+          <a class="drop-item" href="diseases.html"><span class="drop-icon">🦴</span><span class="drop-text"><span class="dt">Osteogenesis Imperfecta</span><span class="dd">Defective collagen</span></span></a>
+          <a class="drop-item" href="diseases.html"><span class="drop-icon">🧬</span><span class="drop-text"><span class="dt">PKU</span><span class="dd">Phenylalanine accumulation</span></span></a>
+        </div>
+      </div>
+    </li>
+
+    <!-- 6. TECHNIQUES -->
+    <li class="nav-item">
+      <a href="techniques.html">Techniques ▾</a>
+      <div class="mega-drop">
+        <div class="drop-col">
+          <div class="drop-col-title">Structural</div>
+          <a class="drop-item" href="techniques.html"><span class="drop-icon">💎</span><span class="drop-text"><span class="dt">X-Ray Crystallography</span><span class="dd">Atomic resolution</span></span></a>
+          <a class="drop-item" href="techniques.html"><span class="drop-icon">🧲</span><span class="drop-text"><span class="dt">NMR Spectroscopy</span><span class="dd">Solution structures</span></span></a>
+          <a class="drop-item" href="techniques.html"><span class="drop-icon">❄️</span><span class="drop-text"><span class="dt">Cryo-EM</span><span class="dd">Resolution revolution</span></span></a>
+          <a class="drop-item" href="techniques.html"><span class="drop-icon">🤖</span><span class="drop-text"><span class="dt">AlphaFold AI</span><span class="dd">AI structure prediction</span></span></a>
+        </div>
+        <div class="drop-col">
+          <div class="drop-col-title">Analytical</div>
+          <a class="drop-item" href="techniques.html"><span class="drop-icon">⚖️</span><span class="drop-text"><span class="dt">Mass Spectrometry</span><span class="dd">Protein identification</span></span></a>
+          <a class="drop-item" href="techniques.html"><span class="drop-icon">🌈</span><span class="drop-text"><span class="dt">CD Spectroscopy</span><span class="dd">Secondary structure</span></span></a>
+          <a class="drop-item" href="techniques.html"><span class="drop-icon">💡</span><span class="drop-text"><span class="dt">FRET</span><span class="dd">Molecular distances</span></span></a>
+          <a class="drop-item" href="techniques.html"><span class="drop-icon">🧫</span><span class="drop-text"><span class="dt">SDS-PAGE/Western</span><span class="dd">Size separation</span></span></a>
+        </div>
+      </div>
+    </li>
+
+    <!-- 7. DATABASE -->
+    <li class="nav-item">
+      <a href="pdb.html">Database ▾</a>
+      <div class="mega-drop">
+        <div class="drop-col">
+          <div class="drop-col-title">Databases</div>
+          <a class="drop-item" href="pdb.html"><span class="drop-icon">🏛️</span><span class="drop-text"><span class="dt">Protein Data Bank</span><span class="dd">200K+ structures</span></span></a>
+          <a class="drop-item" href="pdb.html"><span class="drop-icon">🤖</span><span class="drop-text"><span class="dt">AlphaFold DB</span><span class="dd">200M+ predictions</span></span></a>
+          <a class="drop-item" href="pdb.html"><span class="drop-icon">📚</span><span class="drop-text"><span class="dt">UniProt</span><span class="dd">Protein knowledgebase</span></span></a>
+          <a class="drop-item" href="pdb.html"><span class="drop-icon">🔬</span><span class="drop-text"><span class="dt">NCBI Protein</span><span class="dd">Sequence database</span></span></a>
+        </div>
+        <div class="drop-col">
+          <div class="drop-col-title">Tools</div>
+          <a class="drop-item" href="pdb.html"><span class="drop-icon">🖥️</span><span class="drop-text"><span class="dt">PyMOL</span><span class="dd">Structure visualization</span></span></a>
+          <a class="drop-item" href="pdb.html"><span class="drop-icon">💻</span><span class="drop-text"><span class="dt">BLAST</span><span class="dd">Sequence alignment</span></span></a>
+          <a class="drop-item" href="pdb.html"><span class="drop-icon">🌐</span><span class="drop-text"><span class="dt">Mol* Viewer</span><span class="dd">Web-based 3D viewer</span></span></a>
+          <a class="drop-item" href="pdb.html"><span class="drop-icon">🧮</span><span class="drop-text"><span class="dt">Clustal Omega</span><span class="dd">Multiple alignment</span></span></a>
+        </div>
+      </div>
+    </li>
+
+    <!-- 8. RESOURCES -->
+    <li class="nav-item">
+      <a href="quiz.html">Resources ▾</a>
+      <div class="mega-drop">
+        <div class="drop-col">
+          <div class="drop-col-title">Self-Test & Reference</div>
+          <a class="drop-item" href="quiz.html"><span class="drop-icon">❓</span><span class="drop-text"><span class="dt">10-Question Quiz</span><span class="dd">Test your knowledge</span></span></a>
+          <a class="drop-item" href="glossary.html"><span class="drop-icon">📖</span><span class="drop-text"><span class="dt">Glossary A–Z</span><span class="dd">60+ searchable terms</span></span></a>
+          <a class="drop-item" href="protein-families.html"><span class="drop-icon">🔍</span><span class="drop-text"><span class="dt">Protein Profiles</span><span class="dd">10 case studies</span></span></a>
+          <a class="drop-item" href="evolution.html"><span class="drop-icon">🧫</span><span class="drop-text"><span class="dt">Bioinformatics</span><span class="dd">Evolution & tools</span></span></a>
+        </div>
+      </div>
+    </li>
+
+  </ul>
+</nav>
+
+<!-- ══ PAGE HEADER ══ -->
+<div class="page-header">
+  <div>
+    <a href="protein_structure.html" class="back-btn">← Back to Home</a>
+    <h1>Biology <span style="color:var(--magenta)">Glossary</span></h1>
+    <p>Search and explore essential protein biology terms and definitions</p>
+  </div>
+</div>
+
+<section>
+  <div class="section-inner glossary-container">
+    
+    <!-- SEARCH BOX -->
+    <div class="search-box">
+      <span>🔍</span>
+      <input type="text" id="searchInput" placeholder="Search glossary terms...">
+    </div>
+
+    <!-- GLOSSARY ITEMS -->
+    <div id="glossaryList">
+      
+      <div class="glossary-item" onclick="toggleItem(this)">
+        <div class="glossary-term">
+          Amino Acid <span class="toggle-icon">▼</span>
+          <span class="category-label">Biochemistry</span>
+        </div>
+        <div class="glossary-definition">
+          Organic molecules containing an amino group (-NH2), a carboxyl group (-COOH), and a distinctive R group (side chain) attached to a central carbon atom. Amino acids are the fundamental monomeric units from which proteins are synthesized during translation. The 20 standard amino acids have vastly different chemical properties that determine protein structure and function.
+        </div>
+      </div>
+
+      <div class="glossary-item" onclick="toggleItem(this)">
+        <div class="glossary-term">
+          Primary Structure <span class="toggle-icon">▼</span>
+          <span class="category-label">Structure</span>
+        </div>
+        <div class="glossary-definition">
+          The linear sequence of amino acids in a protein chain, read from the N-terminal to the C-terminal end. Primary structure is determined by the genetic code and is connected by peptide bonds. It contains all the information necessary for protein folding and determines all higher levels of protein structure.
+        </div>
+      </div>
+
+      <div class="glossary-item" onclick="toggleItem(this)">
+        <div class="glossary-term">
+          Secondary Structure <span class="toggle-icon">▼</span>
+          <span class="category-label">Structure</span>
+        </div>
+        <div class="glossary-definition">
+          Local three-dimensional folding patterns stabilized by hydrogen bonds between the backbone atoms (N-H and C=O groups) of the polypeptide chain. Common secondary structures include α-helices (spiral structures), β-sheets (extended conformations), and loops/turns. These structures occur regularly throughout proteins.
+        </div>
+      </div>
+
+      <div class="glossary-item" onclick="toggleItem(this)">
+        <div class="glossary-term">
+          Tertiary Structure <span class="toggle-icon">▼</span>
+          <span class="category-label">Structure</span>
+        </div>
+        <div class="glossary-definition">
+          The complete three-dimensional folding of a protein molecule, stabilized by interactions between amino acid side chains (R groups) including hydrophobic interactions, disulfide bonds, ionic bonds, hydrogen bonds, and van der Waals forces. Tertiary structure determines the overall shape and creates the protein's active sites for biological function.
+        </div>
+      </div>
+
+      <div class="glossary-item" onclick="toggleItem(this)">
+        <div class="glossary-term">
+          Quaternary Structure <span class="toggle-icon">▼</span>
+          <span class="category-label">Structure</span>
+        </div>
+        <div class="glossary-definition">
+          The arrangement of multiple polypeptide chains (subunits) in a multi-subunit protein complex. Quaternary structure is stabilized by the same non-covalent interactions as tertiary structure and is critical for proteins like hemoglobin that exhibit cooperative binding and allosteric regulation.
+        </div>
+      </div>
+
+      <div class="glossary-item" onclick="toggleItem(this)">
+        <div class="glossary-term">
+          Peptide Bond <span class="toggle-icon">▼</span>
+          <span class="category-label">Chemistry</span>
+        </div>
+        <div class="glossary-definition">
+          A covalent bond formed between the carboxyl group (-COOH) of one amino acid and the amino group (-NH2) of another amino acid through a dehydration synthesis reaction. Peptide bonds link amino acids together in a chain and are exceptionally stable under physiological conditions, making them the backbone of all proteins.
+        </div>
+      </div>
+
+      <div class="glossary-item" onclick="toggleItem(this)">
+        <div class="glossary-term">
+          Denaturation <span class="toggle-icon">▼</span>
+          <span class="category-label">Biochemistry</span>
+        </div>
+        <div class="glossary-definition">
+          The process by which a protein loses its three-dimensional structure and becomes non-functional, typically caused by extreme heat, pH changes, or chemical agents. Denaturation disrupts non-covalent interactions maintaining protein structure but leaves peptide bonds intact. The process may be reversible (renaturation) under suitable conditions.
+        </div>
+      </div>
+
+      <div class="glossary-item" onclick="toggleItem(this)">
+        <div class="glossary-term">
+          Enzyme <span class="toggle-icon">▼</span>
+          <span class="category-label">Biochemistry</span>
+        </div>
+        <div class="glossary-definition">
+          A protein catalyst that accelerates biochemical reactions by lowering activation energy without being consumed in the reaction. Enzymes have a specific active site that binds substrate molecules, increases reaction rate by factors of 10^6 to 10^17, and are essential for all metabolic processes in living cells.
+        </div>
+      </div>
+
+      <div class="glossary-item" onclick="toggleItem(this)">
+        <div class="glossary-term">
+          Active Site <span class="toggle-icon">▼</span>
+          <span class="category-label">Biochemistry</span>
+        </div>
+        <div class="glossary-definition">
+          The specific three-dimensional region of an enzyme where substrate molecules bind and catalytic reactions occur. The active site is formed by amino acid residues from different parts of the protein sequence that come together through tertiary folding to create a precise shape and chemical environment for substrate binding and product release.
+        </div>
+      </div>
+
+      <div class="glossary-item" onclick="toggleItem(this)">
+        <div class="glossary-term">
+          Disulfide Bond <span class="toggle-icon">▼</span>
+          <span class="category-label">Chemistry</span>
+        </div>
+        <div class="glossary-definition">
+          A covalent bond formed between the sulfur atoms of two cysteine residues (S-S), providing a particularly strong stabilizing force for tertiary and quaternary protein structure. Disulfide bonds are common in extracellular proteins but rare in cytoplasmic proteins and can be reduced and oxidized, allowing dynamic protein remodeling.
+        </div>
+      </div>
+
+      <div class="glossary-item" onclick="toggleItem(this)">
+        <div class="glossary-term">
+          Hydrophobic Effect <span class="toggle-icon">▼</span>
+          <span class="category-label">Biochemistry</span>
+        </div>
+        <div class="glossary-definition">
+          The tendency of nonpolar (hydrophobic) amino acid side chains to cluster in the protein interior away from water, while polar (hydrophilic) residues tend to be on the surface. This thermodynamically favorable process is the primary driving force for protein folding and is critical for maintaining protein stability and solubility in aqueous environments.
+        </div>
+      </div>
+
+      <div class="glossary-item" onclick="toggleItem(this)">
+        <div class="glossary-term">
+          Globular Protein <span class="toggle-icon">▼</span>
+          <span class="category-label">Protein Type</span>
+        </div>
+        <div class="glossary-definition">
+          A compact, roughly spherical protein with a hydrophobic core and hydrophilic surface, typically soluble in aqueous solutions. Globular proteins include most enzymes, antibodies, and transport proteins. Their folded structure creates pockets and binding sites essential for biological function.
+        </div>
+      </div>
+
+      <div class="glossary-item" onclick="toggleItem(this)">
+        <div class="glossary-term">
+          Fibrous Protein <span class="toggle-icon">▼</span>
+          <span class="category-label">Protein Type</span>
+        </div>
+        <div class="glossary-definition">
+          An elongated, thread-like protein typically insoluble in aqueous solutions, often with highly ordered secondary structure. Fibrous proteins provide structural support; examples include collagen (connective tissue), keratin (hair/nails), and elastin (ligaments). They are often held together by strong covalent cross-links.
+        </div>
+      </div>
+
+      <div class="glossary-item" onclick="toggleItem(this)">
+        <div class="glossary-term">
+          Antibody (Immunoglobulin) <span class="toggle-icon">▼</span>
+          <span class="category-label">Biochemistry</span>
+        </div>
+        <div class="glossary-definition">
+          A Y-shaped protein produced by B cells that specifically recognizes and binds to foreign antigens as part of the immune response. Each antibody has variable regions (binding to specific antigens) and constant regions (triggering immune responses). Antibodies are essential for adaptive immunity and are used therapeutically.
+        </div>
+      </div>
+
+      <div class="glossary-item" onclick="toggleItem(this)">
+        <div class="glossary-term">
+          Hemoglobin <span class="toggle-icon">▼</span>
+          <span class="category-label">Protein Example</span>
+        </div>
+        <div class="glossary-definition">
+          A quaternary protein complex of 4 subunits (2α and 2β) that reversibly binds and transports oxygen from lungs to tissues. Hemoglobin exhibits cooperative binding where binding of one oxygen molecule increases affinity for subsequent molecules. Mutations in globin genes cause hemoglobinopathies like sickle cell disease.
+        </div>
+      </div>
+
+      <div class="glossary-item" onclick="toggleItem(this)">
+        <div class="glossary-term">
+          Transcription <span class="toggle-icon">▼</span>
+          <span class="category-label">Molecular Biology</span>
+        </div>
+        <div class="glossary-definition">
+          The first step of the central dogma where RNA polymerase synthesizes a complementary RNA copy (mRNA) from a DNA template strand. Transcription involves initiation at the promoter, elongation, and termination, producing pre-mRNA in eukaryotes that undergoes processing (5' cap, 3' poly-A tail, splicing) to generate mature mRNA.
+        </div>
+      </div>
+
+      <div class="glossary-item" onclick="toggleItem(this)">
+        <div class="glossary-term">
+          Translation <span class="toggle-icon">▼</span>
+          <span class="category-label">Molecular Biology</span>
+        </div>
+        <div class="glossary-definition">
+          The second step of the central dogma where the ribosome decodes mRNA sequences (codons) into amino acid sequences, synthesizing polypeptide chains. Translation occurs in three phases (initiation, elongation, termination) and involves mRNA, tRNA (carrying amino acids), rRNA, and ribosomal proteins.
+        </div>
+      </div>
+
+      <div class="glossary-item" onclick="toggleItem(this)">
+        <div class="glossary-term">
+          Codon <span class="toggle-icon">▼</span>
+          <span class="category-label">Molecular Biology</span>
+        </div>
+        <div class="glossary-definition">
+          A sequence of three consecutive nucleotides in mRNA that specifies which amino acid to add during protein synthesis. With 64 possible codons (4^3) encoding only 20 amino acids, the genetic code is said to be degenerate. Three codons are stop signals, and one is the start codon (AUG).
+        </div>
+      </div>
+
+      <div class="glossary-item" onclick="toggleItem(this)">
+        <div class="glossary-term">
+          Post-Translational Modification (PTM) <span class="toggle-icon">▼</span>
+          <span class="category-label">Biochemistry</span>
+        </div>
+        <div class="glossary-definition">
+          Chemical modifications of amino acids after protein synthesis that alter protein function, localization, or stability. Common PTMs include phosphorylation (adding phosphate groups for signaling), glycosylation (adding sugar chains), ubiquitination (marking for degradation), and proteolytic cleavage (activating proteins).
+        </div>
+      </div>
+
+      <div class="glossary-item" onclick="toggleItem(this)">
+        <div class="glossary-term">
+          Signal Sequence <span class="toggle-icon">▼</span>
+          <span class="category-label">Biochemistry</span>
+        </div>
+        <div class="glossary-definition">
+          A short peptide sequence at the N-terminus of nascent proteins that directs them to the endoplasmic reticulum for secretion or membrane insertion. Signal sequences are usually removed by signal peptidases during or after translocation, allowing proteins to be targeted to specific cellular compartments.
+        </div>
+      </div>
+
+      <div class="glossary-item" onclick="toggleItem(this)">
+        <div class="glossary-term">
+          Protein Folding <span class="toggle-icon">▼</span>
+          <span class="category-label">Biochemistry</span>
+        </div>
+        <div class="glossary-definition">
+          The process by which a linear polypeptide chain spontaneously assumes its native three-dimensional conformation. Protein folding is driven by entropy and enthalpy considerations, correctly folded by molecular chaperones, and is a critical step for protein function. Misfolding leads to diseases like Alzheimer's and Parkinson's.
+        </div>
+      </div>
+
+      <div class="glossary-item" onclick="toggleItem(this)">
+        <div class="glossary-term">
+          Chaperone Protein <span class="toggle-icon">▼</span>
+          <span class="category-label">Biochemistry</span>
+        </div>
+        <div class="glossary-definition">
+          A class of proteins (like Hsp70, Hsp90, and GroEL) that assist in protein folding, prevent aggregation, and facilitate refolding of misfolded proteins. Chaperones use ATP hydrolysis to bind and release substrate proteins in cycles, protecting exposed hydrophobic regions and promoting correct folding pathways.
+        </div>
+      </div>
+
+      <div class="glossary-item" onclick="toggleItem(this)">
+        <div class="glossary-term">
+          Prion <span class="toggle-icon">▼</span>
+          <span class="category-label">Pathology</span>
+        </div>
+        <div class="glossary-definition">
+          An infectious agent composed entirely of misfolded protein (PrP^Sc) that induces normal prion protein (PrP^C) to adopt the abnormal conformation. Prion diseases like Creutzfeldt-Jakob disease (CJD) and mad cow disease are incurable and fatal, highlighting the importance of proper protein folding.
+        </div>
+      </div>
+
+      <div class="glossary-item" onclick="toggleItem(this)">
+        <div class="glossary-term">
+          Amyloid <span class="toggle-icon">▼</span>
+          <span class="category-label">Pathology</span>
+        </div>
+        <div class="glossary-definition">
+          Abnormal protein aggregates with a characteristic cross-β structural pattern that accumulate in tissues, causing amyloidosis and neurodegenerative diseases. Amyloid plaques consist of misfolded proteins like amyloid-beta (Alzheimer's) and tau (Parkinson's) that spread pathologically between neurons.
+        </div>
+      </div>
+
+      <div class="glossary-item" onclick="toggleItem(this)">
+        <div class="glossary-term">
+          X-Ray Crystallography <span class="toggle-icon">▼</span>
+          <span class="category-label">Technique</span>
+        </div>
+        <div class="glossary-definition">
+          A structural biology technique that determines three-dimensional protein structures by collecting diffraction data from protein crystals and analyzing X-ray scattering patterns. It requires proteins to form high-quality crystals and can achieve atomic resolution. The first protein structure (myoglobin) was solved using this method.
+        </div>
+      </div>
+
+      <div class="glossary-item" onclick="toggleItem(this)">
+        <div class="glossary-term">
+          Cryo-Electron Microscopy (Cryo-EM) <span class="toggle-icon">▼</span>
+          <span class="category-label">Technique</span>
+        </div>
+        <div class="glossary-definition">
+          A structural technique that determines protein structures from rapidly frozen samples in vitreous ice, visualized at cryogenic temperatures. Cryo-EM doesn't require crystallization, enabling study of large complexes and flexible proteins. Its development won the 2017 Nobel Prize and has revolutionized structural biology.
+        </div>
+      </div>
+
+      <div class="glossary-item" onclick="toggleItem(this)">
+        <div class="glossary-term">
+          NMR Spectroscopy <span class="toggle-icon">▼</span>
+          <span class="category-label">Technique</span>
+        </div>
+        <div class="glossary-definition">
+          Nuclear Magnetic Resonance spectroscopy determines protein structures in solution by measuring magnetic interactions between atomic nuclei and radiofrequency pulses. NMR can characterize protein dynamics, measure distances and angles between atoms, and study proteins under physiological conditions.
+        </div>
+      </div>
+
+      <div class="glossary-item" onclick="toggleItem(this)">
+        <div class="glossary-term">
+          Mass Spectrometry <span class="toggle-icon">▼</span>
+          <span class="category-label">Technique</span>
+        </div>
+        <div class="glossary-definition">
+          An analytical technique measuring protein mass and composition by ionizing proteins and separating ions by their mass-to-charge ratio. Mass spectrometry is used for protein identification, sequencing, detecting post-translational modifications, and studying protein-protein interactions with high precision.
+        </div>
+      </div>
+
+      <div class="glossary-item" onclick="toggleItem(this)">
+        <div class="glossary-term">
+          AlphaFold <span class="toggle-icon">▼</span>
+          <span class="category-label">AI/Bioinformatics</span>
+        </div>
+        <div class="glossary-definition">
+          An AI system developed by DeepMind that predicts protein three-dimensional structures from amino acid sequences with remarkable accuracy, solving the 50-year protein folding problem. AlphaFold has predicted structures for ~200 million proteins, revolutionizing structural biology and enabling unprecedented biological insights.
+        </div>
+      </div>
+
+      <div class="glossary-item" onclick="toggleItem(this)">
+        <div class="glossary-term">
+          Protein Data Bank (PDB) <span class="toggle-icon">▼</span>
+          <span class="category-label">Database</span>
+        </div>
+        <div class="glossary-definition">
+          A freely accessible international database of experimentally determined protein structures founded in 1971. The PDB contains over 200,000 structures determined by X-ray crystallography, NMR, and cryo-EM, serving as the central repository for structural biology data essential for research and drug development.
+        </div>
+      </div>
+
+      <div class="glossary-item" onclick="toggleItem(this)">
+        <div class="glossary-term">
+          BLAST (Basic Local Alignment Search Tool) <span class="toggle-icon">▼</span>
+          <span class="category-label">Bioinformatics</span>
+        </div>
+        <div class="glossary-definition">
+          A powerful sequence comparison algorithm that searches databases for protein or DNA sequences similar to a query sequence. BLAST identifies homologous sequences, predicts function, and reveals evolutionary relationships using rapid heuristic algorithms that balance speed with sensitivity.
+        </div>
+      </div>
+
+      <div class="glossary-item" onclick="toggleItem(this)">
+        <div class="glossary-term">
+          Multiple Sequence Alignment (MSA) <span class="toggle-icon">▼</span>
+          <span class="category-label">Bioinformatics</span>
+        </div>
+        <div class="glossary-definition">
+          A computational method that arranges protein or DNA sequences from multiple organisms or genes to reveal conserved regions and evolutionary relationships. Conserved positions indicate functional importance, while variable regions suggest evolutionary divergence and adaptive evolution.
+        </div>
+      </div>
+
+      <div class="glossary-item" onclick="toggleItem(this)">
+        <div class="glossary-term">
+          Homology <span class="toggle-icon">▼</span>
+          <span class="category-label">Evolution</span>
+        </div>
+        <div class="glossary-definition">
+          Similarity between sequences, structures, or genes due to common evolutionary ancestry. Orthologs are homologous genes in different species descended from a common ancestor, while paralogs result from gene duplication. Detecting homology reveals evolutionary relationships and allows functional inference.
+        </div>
+      </div>
+
+      <div class="glossary-item" onclick="toggleItem(this)">
+        <div class="glossary-term">
+          Phylogenetics <span class="toggle-icon">▼</span>
+          <span class="category-label">Evolution</span>
+        </div>
+        <div class="glossary-definition">
+          The study of evolutionary relationships among organisms using molecular sequences or protein structures. Phylogenetic analysis constructs evolutionary trees (phylogenies) showing how organisms diverged from common ancestors, providing insights into protein evolution and function across life.
+        </div>
+      </div>
+
+      <div class="glossary-item" onclick="toggleItem(this)">
+        <div class="glossary-term">
+          Mutation <span class="toggle-icon">▼</span>
+          <span class="category-label">Molecular Biology</span>
+        </div>
+        <div class="glossary-definition">
+          A permanent change in DNA sequence that alters amino acids in proteins or affects regulatory regions. Mutations can be silent (no effect), missense (alter amino acid), nonsense (premature stop), or frameshift (alter reading frame). While most are neutral, some cause disease or drive evolution.
+        </div>
+      </div>
+
+      <div class="glossary-item" onclick="toggleItem(this)">
+        <div class="glossary-term">
+          Gene Expression <span class="toggle-icon">▼</span>
+          <span class="category-label">Molecular Biology</span>
+        </div>
+        <div class="glossary-definition">
+          The process by which genetic information is converted into functional protein products through transcription and translation. Gene expression is highly regulated by transcription factors, epigenetic modifications, and post-transcriptional mechanisms, allowing cells to respond to environmental signals.
+        </div>
+      </div>
+
+      <div class="glossary-item" onclick="toggleItem(this)">
+        <div class="glossary-term">
+          Ribosome <span class="toggle-icon">▼</span>
+          <span class="category-label">Biochemistry</span>
+        </div>
+        <div class="glossary-definition">
+          A large ribonucleoprotein complex (rRNA and proteins) that catalyzes protein synthesis by decoding mRNA and forming peptide bonds. Ribosomes consist of a small and large subunit (70S in prokaryotes, 80S in eukaryotes) and are among the largest and most conserved molecular machines in cells.
+        </div>
+      </div>
+
+      <div class="glossary-item" onclick="toggleItem(this)">
+        <div class="glossary-term">
+          Allosteric Regulation <span class="toggle-icon">▼</span>
+          <span class="category-label">Biochemistry</span>
+        </div>
+        <div class="glossary-definition">
+          A form of protein regulation where binding of an effector molecule at a site distant from the active site changes the enzyme's activity. Allosteric regulation enables proteins to sense cellular status and respond appropriately; hemoglobin and many enzymes show allosteric behavior essential for metabolic control.
+        </div>
+      </div>
+
+      <div class="glossary-item" onclick="toggleItem(this)">
+        <div class="glossary-term">
+          Cooperativity <span class="toggle-icon">▼</span>
+          <span class="category-label">Biochemistry</span>
+        </div>
+        <div class="glossary-definition">
+          A phenomenon where binding of a ligand to one site on a protein increases affinity for binding at other sites. Positive cooperativity (like hemoglobin's oxygen binding) produces sigmoidal binding curves, allowing proteins to exhibit sharp transitions between low and high activity states in response to small stimuli changes.
+        </div>
+      </div>
+
+      <div class="glossary-item" onclick="toggleItem(this)">
+        <div class="glossary-term">
+          Hydrophilic <span class="toggle-icon">▼</span>
+          <span class="category-label">Chemistry</span>
+        </div>
+        <div class="glossary-definition">
+          Water-loving or polar molecules that dissolve readily in water due to ability to form hydrogen bonds and electrostatic interactions. Hydrophilic amino acids (like serine, threonine, aspartate) are typically found on protein surfaces, while hydrophobic residues cluster in the protein core.
+        </div>
+      </div>
+
+      <div class="glossary-item" onclick="toggleItem(this)">
+        <div class="glossary-term">
+          Hydrophobic <span class="toggle-icon">▼</span>
+          <span class="category-label">Chemistry</span>
+        </div>
+        <div class="glossary-definition">
+          Water-repelling or nonpolar molecules that do not readily dissolve in water. Hydrophobic amino acids (like valine, leucine, proline) have nonpolar side chains and tend to cluster in protein cores away from the aqueous environment, driven by entropy and the hydrophobic effect.
+        </div>
+      </div>
+
+      <div class="glossary-item" onclick="toggleItem(this)">
+        <div class="glossary-term">
+          Van der Waals Forces <span class="toggle-icon">▼</span>
+          <span class="category-label">Chemistry</span>
+        </div>
+        <div class="glossary-definition">
+          Weak non-covalent interactions between atoms and molecules including London dispersion forces and dipole interactions. Van der Waals forces are individually weak but collectively important for protein stability, contribute to hydrophobic effect, and mediate protein-protein and protein-ligand binding.
+        </div>
+      </div>
+
+      <div class="glossary-item" onclick="toggleItem(this)">
+        <div class="glossary-term">
+          Hydrogen Bond <span class="toggle-icon">▼</span>
+          <span class="category-label">Chemistry</span>
+        </div>
+        <div class="glossary-definition">
+          A weak but crucial non-covalent interaction between a hydrogen atom bonded to an electronegative atom (N or O) and a lone pair on another electronegative atom. Hydrogen bonds stabilize protein secondary and tertiary structures, enable enzyme-substrate recognition, and mediate protein-DNA interactions.
+        </div>
+      </div>
+
+      <div class="glossary-item" onclick="toggleItem(this)">
+        <div class="glossary-term">
+          Ionic Bond (Salt Bridge) <span class="toggle-icon">▼</span>
+          <span class="category-label">Chemistry</span>
+        </div>
+        <div class="glossary-definition">
+          An electrostatic attraction between oppositely charged amino acid side chains (e.g., lysine +, aspartate -) that stabilizes protein structure. Salt bridges are pH-sensitive, more destabilizing at high ionic strength, and important for protein-protein interactions, enzyme specificity, and protein-DNA binding.
+        </div>
+      </div>
+
+      <div class="glossary-item" onclick="toggleItem(this)">
+        <div class="glossary-term">
+          Homozygous <span class="toggle-icon">▼</span>
+          <span class="category-label">Genetics</span>
+        </div>
+        <div class="glossary-definition">
+          An organism carrying two identical alleles of a gene (both from same origin). Homozygous mutations can cause recessive genetic diseases like cystic fibrosis, while homozygous normal alleles provide protection from recessive diseases.
+        </div>
+      </div>
+
+      <div class="glossary-item" onclick="toggleItem(this)">
+        <div class="glossary-term">
+          Heterozygous <span class="toggle-icon">▼</span>
+          <span class="category-label">Genetics</span>
+        </div>
+        <div class="glossary-definition">
+          An organism carrying two different alleles of a gene (one from each parent). Heterozygous carriers of recessive mutations typically show the normal phenotype but can pass the mutant allele to offspring, making them important for genetic disease transmission in families.
+        </div>
+      </div>
+
+      <div class="glossary-item" onclick="toggleItem(this)">
+        <div class="glossary-term">
+          Misfolding <span class="toggle-icon">▼</span>
+          <span class="category-label">Pathology</span>
+        </div>
+        <div class="glossary-definition">
+          The folding of a protein chain into an incorrect three-dimensional conformation, resulting in loss of function or gain of toxic properties. Protein misfolding can be caused by mutations, oxidative stress, or aging and is central to Alzheimer's, Parkinson's, and prion diseases.
+        </div>
+      </div>
+
+      <div class="glossary-item" onclick="toggleItem(this)">
+        <div class="glossary-term">
+          Aggregation <span class="toggle-icon">▼</span>
+          <span class="category-label">Pathology</span>
+        </div>
+        <div class="glossary-definition">
+          The process where misfolded protein molecules clump together into insoluble deposits. Protein aggregates accumulate in cells during neurodegenerative diseases and are toxic to neurons. Cells have quality control systems (proteasome, autophagy) to prevent aggregation by removing misfolded proteins.
+        </div>
+      </div>
+
+      <div class="glossary-item" onclick="toggleItem(this)">
+        <div class="glossary-term">
+          Proteasome <span class="toggle-icon">▼</span>
+          <span class="category-label">Biochemistry</span>
+        </div>
+        <div class="glossary-definition">
+          A large protein complex responsible for degrading proteins marked with ubiquitin (ubiquitinated) through ATP-dependent proteolysis. The 26S proteasome is essential for removing damaged, misfolded, or regulatory proteins, and is therefore central to protein quality control and cell cycle regulation.
+        </div>
+      </div>
+
+      <div class="glossary-item" onclick="toggleItem(this)">
+        <div class="glossary-term">
+          Ubiquitin <span class="toggle-icon">▼</span>
+          <span class="category-label">Biochemistry</span>
+        </div>
+        <div class="glossary-definition">
+          A 76-amino acid regulatory protein covalently attached to target proteins as part of post-translational modification. Ubiquitination serves as a signal for proteasomal degradation, alters protein localization, and regulates protein-protein interactions, making it central to cellular regulation.
+        </div>
+      </div>
+
+      <div class="glossary-item" onclick="toggleItem(this)">
+        <div class="glossary-term">
+          Kinase <span class="toggle-icon">▼</span>
+          <span class="category-label">Protein Type</span>
+        </div>
+        <div class="glossary-definition">
+          An enzyme that catalyzes phosphorylation by transferring phosphate groups (PO4^3-) from ATP to amino acid residues (serine, threonine, tyrosine) on target proteins. Kinases regulate protein activity, localization, and interactions, making them central to cell signaling and controlling most cellular processes.
+        </div>
+      </div>
+
+      <div class="glossary-item" onclick="toggleItem(this)">
+        <div class="glossary-term">
+          GPCR (G-Protein Coupled Receptor) <span class="toggle-icon">▼</span>
+          <span class="category-label">Protein Type</span>
+        </div>
+        <div class="glossary-definition">
+          A large family of membrane proteins with seven trans-membrane domains that transduce extracellular signals into intracellular responses. GPCRs bind diverse ligands (photons, odorants, hormones) and are the targets of ~30% of all clinical drugs, making them among the most important drug targets.
+        </div>
+      </div>
+
+      <div class="glossary-item" onclick="toggleItem(this)">
+        <div class="glossary-term">
+          Motor Protein <span class="toggle-icon">▼</span>
+          <span class="category-label">Protein Type</span>
+        </div>
+        <div class="glossary-definition">
+          A protein that converts chemical energy (ATP hydrolysis) into mechanical movement along molecular tracks (actin or microtubules). Motor proteins like myosin, kinesins, and dyneins power muscle contraction, intracellular transport, and cell division, using their domains for force generation and directional movement.
+        </div>
+      </div>
+
+      <div class="glossary-item" onclick="toggleItem(this)">
+        <div class="glossary-term">
+          Transport Protein <span class="toggle-icon">▼</span>
+          <span class="category-label">Protein Type</span>
+        </div>
+        <div class="glossary-definition">
+          A protein that binds and carries specific molecules across membranes or through the bloodstream. Transport proteins include hemoglobin (oxygen), aquaporins (water channels), and glucose transporters, enabling cells to uptake nutrients, ions, and gases while maintaining concentration gradients.
+        </div>
+      </div>
+
+      <div class="glossary-item" onclick="toggleItem(this)">
+        <div class="glossary-term">
+          Collagen <span class="toggle-icon">▼</span>
+          <span class="category-label">Protein Example</span>
+        </div>
+        <div class="glossary-definition">
+          The most abundant protein in animals, forming ~30% of total body protein, providing tensile strength to connective tissue. Collagen has a unique triple helix structure with abundant glycine and proline, undergoes extensive post-translational modifications, and mutations cause osteogenesis imperfecta.
+        </div>
+      </div>
+
+      <div class="glossary-item" onclick="toggleItem(this)">
+        <div class="glossary-term">
+          Keratin <span class="toggle-icon">▼</span>
+          <span class="category-label">Protein Example</span>
+        </div>
+        <div class="glossary-definition">
+          A key structural protein in hair, nails, and skin epidermis forming strong α-helical coiled-coil structures. Keratin provides mechanical strength and water resistance through extensive disulfide bonding between subunits, making it among the strongest biological polymers.
+        </div>
+      </div>
+
+      <div class="glossary-item" onclick="toggleItem(this)">
+        <div class="glossary-term">
+          Central Dogma <span class="toggle-icon">▼</span>
+          <span class="category-label">Molecular Biology</span>
+        </div>
+        <div class="glossary-definition">
+          Francis Crick's fundamental principle describing information flow in biological systems: DNA is replicated to DNA, transcribed to RNA, and translated to protein. The central dogma explains how genetic information is stored, transmitted, and expressed, forming the basis of molecular biology.
+        </div>
+      </div>
+
+      <div class="glossary-item" onclick="toggleItem(this)">
+        <div class="glossary-term">
+          Reverse Transcription <span class="toggle-icon">▼</span>
+          <span class="category-label">Molecular Biology</span>
+        </div>
+        <div class="glossary-definition">
+          The synthesis of DNA from an RNA template catalyzed by reverse transcriptase, an exception to the central dogma. Reverse transcription occurs in retroviruses (like HIV), allowing RNA viruses to integrate into host DNA. The process is exploited for cDNA library construction.
+        </div>
+      </div>
+
+      <div class="glossary-item" onclick="toggleItem(this)">
+        <div class="glossary-term">
+          Drug Discovery <span class="toggle-icon">▼</span>
+          <span class="category-label">Applications</span>
+        </div>
+        <div class="glossary-definition">
+          The research process of identifying new therapeutic proteins from natural sources or by protein engineering to treat diseases. Drug discovery uses protein structures (from PDB or AlphaFold), enzyme assays, and computational docking to find compounds that bind target proteins with high affinity and specificity.
+        </div>
+      </div>
+
+      <div class="glossary-item" onclick="toggleItem(this)">
+        <div class="glossary-term">
+          Bioinformatics <span class="toggle-icon">▼</span>
+          <span class="category-label">Discipline</span>
+        </div>
+        <div class="glossary-definition">
+          The interdisciplinary field combining biology, computer science, and statistics to analyze biological data. Bioinformatics includes sequence analysis (BLAST, MSA), structure prediction (AlphaFold), phylogenetics, and genomics, enabling large-scale analysis impossible by traditional methods.
+        </div>
+      </div>
+
+      <div class="glossary-item" onclick="toggleItem(this)">
+        <div class="glossary-term">
+          Structural Biology <span class="toggle-icon">▼</span>
+          <span class="category-label">Discipline</span>
+        </div>
+        <div class="glossary-definition">
+          A scientific discipline focusing on determining and understanding three-dimensional structures of proteins and other biomolecules using techniques like crystallography, NMR, cryo-EM, and computational modeling. Structural insights explain protein function and enable rational drug design.
+        </div>
+      </div>
+
+      <div class="glossary-item" onclick="toggleItem(this)">
+        <div class="glossary-term">
+          Molecular Dynamics (MD) <span class="toggle-icon">▼</span>
+          <span class="category-label">Technique</span>
+        </div>
+        <div class="glossary-definition">
+          A computational technique simulating protein motion by solving Newton's equations of motion for each atom based on force fields. MD reveals how proteins move, change conformation, and interact with ligands over time scales from picoseconds to microseconds, providing insights impossible from static structures.
+        </div>
+      </div>
+
+      <div class="glossary-item" onclick="toggleItem(this)">
+        <div class="glossary-term">
+          Docking <span class="toggle-icon">▼</span>
+          <span class="category-label">Technique</span>
+        </div>
+        <div class="glossary-definition">
+          A computational method predicting how ligands (drugs, substrates) bind to proteins by sampling different ligand orientations and conformations. Molecular docking uses scoring functions to rank binding poses and is essential for structure-based drug discovery to rapidly screen millions of compounds.
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="footer-title">⬡ Protein Structure Explorer — Advanced Edition</div>
+  <div class="footer-sub">
+    Made by [Your Name] · Biology Class 2024–25<br>
+    Sources: RCSB PDB · UniProt · NCBI · Lehninger Principles of Biochemistry 6th Ed · Alberts Molecular Biology of the Cell 6th Ed
+  </div>
+</footer>
+
+<script>
+function toggleItem(element) {
+  // Close other items
+  document.querySelectorAll('.glossary-item').forEach(item => {
+    if (item !== element) item.classList.remove('active');
+  });
+  // Toggle current item
+  element.classList.toggle('active');
+}
+
+// Search functionality
+document.getElementById('searchInput').addEventListener('keyup', function(e) {
+  const searchTerm = e.target.value.toLowerCase();
+  const items = document.querySelectorAll('.glossary-item');
+  
+  items.forEach(item => {
+    const term = item.querySelector('.glossary-term').textContent.toLowerCase();
+    const definition = item.querySelector('.glossary-definition').textContent.toLowerCase();
+    
+    if (term.includes(searchTerm) || definition.includes(searchTerm)) {
+      item.style.display = 'block';
+    } else {
+      item.style.display = 'none';
+    }
+  });
+});
+</script>
+
+<script src="script.js"></script>
+</body>
+</html>
+

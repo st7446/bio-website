@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Protein Synthesis — Protein Structure Explorer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- ══ NAVBAR ══ -->
+<nav>
+  <a href="protein_structure.html" class="nav-logo">⬡ PROTEIN<span>EXPLORER</span></a>
+  <ul class="nav-links">
+
+    <!-- 1. PROTEINS -->
+    <li class="nav-item">
+      <a href="introduction.html">Proteins ▾</a>
+      <div class="mega-drop wide">
+        <div class="drop-col">
+          <div class="drop-col-title">Basics</div>
+          <a class="drop-item" href="introduction.html"><span class="drop-icon">🧬</span><span class="drop-text"><span class="dt">What Are Proteins?</span><span class="dd">Definition & history</span></span></a>
+          <a class="drop-item" href="amino-acids.html"><span class="drop-icon">⚗️</span><span class="drop-text"><span class="dt">Amino Acids</span><span class="dd">20 building blocks</span></span></a>
+          <a class="drop-item" href="introduction.html"><span class="drop-icon">🔗</span><span class="drop-text"><span class="dt">Peptide Bonds</span><span class="dd">Condensation chemistry</span></span></a>
+          <a class="drop-item" href="introduction.html"><span class="drop-icon">🌀</span><span class="drop-text"><span class="dt">Polypeptides</span><span class="dd">Chain formation</span></span></a>
+          <a class="drop-item" href="protein-synthesis.html"><span class="drop-icon">🏭</span><span class="drop-text"><span class="dt">Ribosomes</span><span class="dd">Protein factories</span></span></a>
+          <a class="drop-item" href="protein-synthesis.html"><span class="drop-icon">📐</span><span class="drop-text"><span class="dt">Central Dogma</span><span class="dd">DNA→RNA→Protein</span></span></a>
+        </div>
+        <div class="drop-col">
+          <div class="drop-col-title">Types</div>
+          <a class="drop-item" href="protein-families.html"><span class="drop-icon">⚡</span><span class="drop-text"><span class="dt">Enzymes</span><span class="dd">Biological catalysts</span></span></a>
+          <a class="drop-item" href="protein-families.html"><span class="drop-icon">💉</span><span class="drop-text"><span class="dt">Hormones</span><span class="dd">Chemical messengers</span></span></a>
+          <a class="drop-item" href="protein-families.html"><span class="drop-icon">🛡️</span><span class="drop-text"><span class="dt">Antibodies</span><span class="dd">Immune defenders</span></span></a>
+          <a class="drop-item" href="protein-families.html"><span class="drop-icon">🚌</span><span class="drop-text"><span class="dt">Transport</span><span class="dd">Hemoglobin, albumin</span></span></a>
+          <a class="drop-item" href="protein-families.html"><span class="drop-icon">🏗️</span><span class="drop-text"><span class="dt">Structural</span><span class="dd">Collagen, keratin</span></span></a>
+          <a class="drop-item" href="protein-families.html"><span class="drop-icon">🏃</span><span class="drop-text"><span class="dt">Motor Proteins</span><span class="dd">Myosin, kinesin</span></span></a>
+        </div>
+        <div class="drop-col">
+          <div class="drop-col-title">Functions</div>
+          <a class="drop-item" href="protein-families.html"><span class="drop-icon">🔬</span><span class="drop-text"><span class="dt">Catalysis</span><span class="dd">Enzyme mechanisms</span></span></a>
+          <a class="drop-item" href="introduction.html"><span class="drop-icon">📡</span><span class="drop-text"><span class="dt">Cell Signaling</span><span class="dd">Receptors & cascades</span></span></a>
+          <a class="drop-item" href="protein-synthesis.html"><span class="drop-icon">🧬</span><span class="drop-text"><span class="dt">DNA Replication</span><span class="dd">Polymerases</span></span></a>
+          <a class="drop-item" href="protein-families.html"><span class="drop-icon">💪</span><span class="drop-text"><span class="dt">Muscle Contraction</span><span class="dd">Actin–myosin cycle</span></span></a>
+          <a class="drop-item" href="diseases.html"><span class="drop-icon">🦠</span><span class="drop-text"><span class="dt">Immune Defense</span><span class="dd">Antibodies & MHC</span></span></a>
+          <a class="drop-item" href="protein-families.html"><span class="drop-icon">🩸</span><span class="drop-text"><span class="dt">O₂ Transport</span><span class="dd">Hemoglobin & myoglobin</span></span></a>
+        </div>
+      </div>
+    </li>
+
+    <!-- 2. STRUCTURE LEVELS -->
+    <li class="nav-item">
+      <a href="protein-structure-levels.html">Structure ▾</a>
+      <div class="mega-drop">
+        <div class="drop-col">
+          <div class="drop-col-title">4 Levels</div>
+          <a class="drop-item" href="protein-structure-levels.html"><span class="drop-icon">①</span><span class="drop-text"><span class="dt">Primary</span><span class="dd">Amino acid sequence</span></span></a>
+          <a class="drop-item" href="protein-structure-levels.html"><span class="drop-icon">②</span><span class="drop-text"><span class="dt">Secondary</span><span class="dd">α-helices & β-sheets</span></span></a>
+          <a class="drop-item" href="protein-structure-levels.html"><span class="drop-icon">③</span><span class="drop-text"><span class="dt">Tertiary</span><span class="dd">3D globular fold</span></span></a>
+          <a class="drop-item" href="protein-structure-levels.html"><span class="drop-icon">④</span><span class="drop-text"><span class="dt">Quaternary</span><span class="dd">Multi-subunit complexes</span></span></a>
+        </div>
+        <div class="drop-col">
+          <div class="drop-col-title">Key Concepts</div>
+          <a class="drop-item" href="protein-structure-levels.html"><span class="drop-icon">🔄</span><span class="drop-text"><span class="dt">H-Bonds</span><span class="dd">Backbone interactions</span></span></a>
+          <a class="drop-item" href="protein-structure-levels.html"><span class="drop-icon">💧</span><span class="drop-text"><span class="dt">Hydrophobic Core</span><span class="dd">Driving force for folding</span></span></a>
+          <a class="drop-item" href="protein-structure-levels.html"><span class="drop-icon">⚙️</span><span class="drop-text"><span class="dt">Disulfide Bonds</span><span class="dd">Covalent stabilization</span></span></a>
+          <a class="drop-item" href="protein-structure-levels.html"><span class="drop-icon">📊</span><span class="drop-text"><span class="dt">Ramachandran Plot</span><span class="dd">Allowed φ/ψ angles</span></span></a>
+        </div>
+      </div>
+    </li>
+
+    <!-- 3. 3D MODELS -->
+    <li class="nav-item">
+      <a href="3d-models.html">3D Models ▾</a>
+      <div class="mega-drop wide">
+        <div class="drop-col">
+          <div class="drop-col-title">Basic</div>
+          <a class="drop-item" href="3d-models.html"><span class="drop-icon">🔵</span><span class="drop-text"><span class="dt">Primary Chain</span><span class="dd">Polypeptide backbone</span></span></a>
+          <a class="drop-item" href="3d-models.html"><span class="drop-icon">🌀</span><span class="drop-text"><span class="dt">Alpha-Helix</span><span class="dd">Right-handed coil</span></span></a>
+          <a class="drop-item" href="3d-models.html"><span class="drop-icon">📋</span><span class="drop-text"><span class="dt">Beta-Sheet</span><span class="dd">Parallel/antiparallel strands</span></span></a>
+          <a class="drop-item" href="3d-models.html"><span class="drop-icon">🔮</span><span class="drop-text"><span class="dt">Tertiary Fold</span><span class="dd">Globular 3D fold</span></span></a>
+        </div>
+        <div class="drop-col">
+          <div class="drop-col-title">Classic</div>
+          <a class="drop-item" href="3d-models.html"><span class="drop-icon">🩸</span><span class="drop-text"><span class="dt">Hemoglobin</span><span class="dd">Heterotetramer</span></span></a>
+          <a class="drop-item" href="3d-models.html"><span class="drop-icon">🦴</span><span class="drop-text"><span class="dt">Collagen</span><span class="dd">Triple helix</span></span></a>
+          <a class="drop-item" href="3d-models.html"><span class="drop-icon">💉</span><span class="drop-text"><span class="dt">Insulin</span><span class="dd">Disulfide-linked chains</span></span></a>
+          <a class="drop-item" href="3d-models.html"><span class="drop-icon">🏋️</span><span class="drop-text"><span class="dt">Myoglobin</span><span class="dd">O₂-binding globin</span></span></a>
+        </div>
+        <div class="drop-col">
+          <div class="drop-col-title">Machines</div>
+          <a class="drop-item" href="3d-models.html"><span class="drop-icon">⚡</span><span class="drop-text"><span class="dt">ATP Synthase</span><span class="dd">Rotary motor</span></span></a>
+          <a class="drop-item" href="3d-models.html"><span class="drop-icon">🏭</span><span class="drop-text"><span class="dt">Ribosome</span><span class="dd">Protein factory</span></span></a>
+          <a class="drop-item" href="3d-models.html"><span class="drop-icon">Y️</span><span class="drop-text"><span class="dt">Antibody IgG</span><span class="dd">Y-shaped immune protein</span></span></a>
+          <a class="drop-item" href="3d-models.html"><span class="drop-icon">🗑️</span><span class="drop-text"><span class="dt">Proteasome</span><span class="dd">Protein degrader</span></span></a>
+        </div>
+      </div>
+    </li>
+
+    <!-- 4. FAMILIES -->
+    <li class="nav-item">
+      <a href="protein-families.html">Families ▾</a>
+      <div class="mega-drop">
+        <div class="drop-col">
+          <div class="drop-col-title">Categories</div>
+          <a class="drop-item" href="protein-families.html"><span class="drop-icon">⚽</span><span class="drop-text"><span class="dt">Globular</span><span class="dd">Compact & soluble</span></span></a>
+          <a class="drop-item" href="protein-families.html"><span class="drop-icon">🧵</span><span class="drop-text"><span class="dt">Fibrous</span><span class="dd">Structural filaments</span></span></a>
+          <a class="drop-item" href="protein-families.html"><span class="drop-icon">🫧</span><span class="drop-text"><span class="dt">Membrane</span><span class="dd">Embedded in bilayer</span></span></a>
+          <a class="drop-item" href="protein-families.html"><span class="drop-icon">🌊</span><span class="drop-text"><span class="dt">Disordered</span><span class="dd">No fixed structure</span></span></a>
+        </div>
+        <div class="drop-col">
+          <div class="drop-col-title">Specialized</div>
+          <a class="drop-item" href="protein-families.html"><span class="drop-icon">🔧</span><span class="drop-text"><span class="dt">Enzymes</span><span class="dd">6 EC classes</span></span></a>
+          <a class="drop-item" href="protein-families.html"><span class="drop-icon">🛡️</span><span class="drop-text"><span class="dt">Antibodies</span><span class="dd">5 immunoglobulin classes</span></span></a>
+          <a class="drop-item" href="protein-families.html"><span class="drop-icon">🏃</span><span class="drop-text"><span class="dt">Motor Proteins</span><span class="dd">Myosin, kinesin, dynein</span></span></a>
+          <a class="drop-item" href="protein-families.html"><span class="drop-icon">🫂</span><span class="drop-text"><span class="dt">Chaperones</span><span class="dd">Folding assistants</span></span></a>
+        </div>
+      </div>
+    </li>
+
+    <!-- 5. DISEASES -->
+    <li class="nav-item">
+      <a href="diseases.html">Diseases ▾</a>
+      <div class="mega-drop">
+        <div class="drop-col">
+          <div class="drop-col-title">Misfolding</div>
+          <a class="drop-item" href="diseases.html"><span class="drop-icon">🧠</span><span class="drop-text"><span class="dt">Alzheimer's</span><span class="dd">Aβ plaques + tau tangles</span></span></a>
+          <a class="drop-item" href="diseases.html"><span class="drop-icon">🤝</span><span class="drop-text"><span class="dt">Parkinson's</span><span class="dd">α-synuclein Lewy bodies</span></span></a>
+          <a class="drop-item" href="diseases.html"><span class="drop-icon">👻</span><span class="drop-text"><span class="dt">Prion Diseases</span><span class="dd">PrPc → PrPsc</span></span></a>
+        </div>
+        <div class="drop-col">
+          <div class="drop-col-title">Genetic</div>
+          <a class="drop-item" href="diseases.html"><span class="drop-icon">🩸</span><span class="drop-text"><span class="dt">Sickle Cell</span><span class="dd">Glu6Val in β-globin</span></span></a>
+          <a class="drop-item" href="diseases.html"><span class="drop-icon">🫁</span><span class="drop-text"><span class="dt">Cystic Fibrosis</span><span class="dd">CFTR mutations</span></span></a>
+          <a class="drop-item" href="diseases.html"><span class="drop-icon">🦴</span><span class="drop-text"><span class="dt">Osteogenesis Imperfecta</span><span class="dd">Defective collagen</span></span></a>
+          <a class="drop-item" href="diseases.html"><span class="drop-icon">🧬</span><span class="drop-text"><span class="dt">PKU</span><span class="dd">Phenylalanine accumulation</span></span></a>
+        </div>
+      </div>
+    </li>
+
+    <!-- 6. TECHNIQUES -->
+    <li class="nav-item">
+      <a href="techniques.html">Techniques ▾</a>
+      <div class="mega-drop">
+        <div class="drop-col">
+          <div class="drop-col-title">Structural</div>
+          <a class="drop-item" href="techniques.html"><span class="drop-icon">💎</span><span class="drop-text"><span class="dt">X-Ray Crystallography</span><span class="dd">Atomic resolution</span></span></a>
+          <a class="drop-item" href="techniques.html"><span class="drop-icon">🧲</span><span class="drop-text"><span class="dt">NMR Spectroscopy</span><span class="dd">Solution structures</span></span></a>
+          <a class="drop-item" href="techniques.html"><span class="drop-icon">❄️</span><span class="drop-text"><span class="dt">Cryo-EM</span><span class="dd">Resolution revolution</span></span></a>
+          <a class="drop-item" href="techniques.html"><span class="drop-icon">🤖</span><span class="drop-text"><span class="dt">AlphaFold AI</span><span class="dd">AI structure prediction</span></span></a>
+        </div>
+        <div class="drop-col">
+          <div class="drop-col-title">Analytical</div>
+          <a class="drop-item" href="techniques.html"><span class="drop-icon">⚖️</span><span class="drop-text"><span class="dt">Mass Spectrometry</span><span class="dd">Protein identification</span></span></a>
+          <a class="drop-item" href="techniques.html"><span class="drop-icon">🌈</span><span class="drop-text"><span class="dt">CD Spectroscopy</span><span class="dd">Secondary structure</span></span></a>
+          <a class="drop-item" href="techniques.html"><span class="drop-icon">💡</span><span class="drop-text"><span class="dt">FRET</span><span class="dd">Molecular distances</span></span></a>
+          <a class="drop-item" href="techniques.html"><span class="drop-icon">🧫</span><span class="drop-text"><span class="dt">SDS-PAGE/Western</span><span class="dd">Size separation</span></span></a>
+        </div>
+      </div>
+    </li>
+
+    <!-- 7. DATABASE -->
+    <li class="nav-item">
+      <a href="pdb.html">Database ▾</a>
+      <div class="mega-drop">
+        <div class="drop-col">
+          <div class="drop-col-title">Databases</div>
+          <a class="drop-item" href="pdb.html"><span class="drop-icon">🏛️</span><span class="drop-text"><span class="dt">Protein Data Bank</span><span class="dd">200K+ structures</span></span></a>
+          <a class="drop-item" href="pdb.html"><span class="drop-icon">🤖</span><span class="drop-text"><span class="dt">AlphaFold DB</span><span class="dd">200M+ predictions</span></span></a>
+          <a class="drop-item" href="pdb.html"><span class="drop-icon">📚</span><span class="drop-text"><span class="dt">UniProt</span><span class="dd">Protein knowledgebase</span></span></a>
+          <a class="drop-item" href="pdb.html"><span class="drop-icon">🔬</span><span class="drop-text"><span class="dt">NCBI Protein</span><span class="dd">Sequence database</span></span></a>
+        </div>
+        <div class="drop-col">
+          <div class="drop-col-title">Tools</div>
+          <a class="drop-item" href="pdb.html"><span class="drop-icon">🖥️</span><span class="drop-text"><span class="dt">PyMOL</span><span class="dd">Structure visualization</span></span></a>
+          <a class="drop-item" href="pdb.html"><span class="drop-icon">💻</span><span class="drop-text"><span class="dt">BLAST</span><span class="dd">Sequence alignment</span></span></a>
+          <a class="drop-item" href="pdb.html"><span class="drop-icon">🌐</span><span class="drop-text"><span class="dt">Mol* Viewer</span><span class="dd">Web-based 3D viewer</span></span></a>
+          <a class="drop-item" href="pdb.html"><span class="drop-icon">🧮</span><span class="drop-text"><span class="dt">Clustal Omega</span><span class="dd">Multiple alignment</span></span></a>
+        </div>
+      </div>
+    </li>
+
+    <!-- 8. RESOURCES -->
+    <li class="nav-item">
+      <a href="quiz.html">Resources ▾</a>
+      <div class="mega-drop">
+        <div class="drop-col">
+          <div class="drop-col-title">Self-Test & Reference</div>
+          <a class="drop-item" href="quiz.html"><span class="drop-icon">❓</span><span class="drop-text"><span class="dt">10-Question Quiz</span><span class="dd">Test your knowledge</span></span></a>
+          <a class="drop-item" href="glossary.html"><span class="drop-icon">📖</span><span class="drop-text"><span class="dt">Glossary A–Z</span><span class="dd">60+ searchable terms</span></span></a>
+          <a class="drop-item" href="protein-families.html"><span class="drop-icon">🔍</span><span class="drop-text"><span class="dt">Protein Profiles</span><span class="dd">10 case studies</span></span></a>
+          <a class="drop-item" href="evolution.html"><span class="drop-icon">🧫</span><span class="drop-text"><span class="dt">Bioinformatics</span><span class="dd">Evolution & tools</span></span></a>
+        </div>
+      </div>
+    </li>
+
+  </ul>
+</nav>
+
+<!-- ══ PAGE HEADER ══ -->
+<div class="page-header">
+  <div>
+    <a href="protein_structure.html" class="back-btn">← Back to Home</a>
+    <h1>Protein <span style="color:var(--cyan)">Synthesis</span></h1>
+    <p>The process by which cells build proteins according to genetic instructions. This central dogma (DNA → RNA → Protein) is fundamental to all life.</p>
+  </div>
+</div>
+
+<section>
+  <div class="section-inner">
+    <h2 class="section-title">The Central <span>Dogma</span></h2>
+    <div class="section-divider"></div>
+    
+    <p style="color:var(--text-dim);font-size:1.05rem;margin-bottom:2rem;">
+      DNA carries genetic information encoded in nucl nucleotide sequences. This information flows: DNA → RNA → Protein. Each step involves specific enzymes and machinery.
+    </p>
+    
+    <div class="cards-grid">
+      <div class="content-card">
+        <h3>DNA → DNA (Replication)</h3>
+        <p>DNA polymerase replicates the entire genome before cell division. Semi-conservative replication creates two identical DNA molecules from one. Essential for heredity and genetic continuity across generations.</p>
+      </div>
+      
+      <div class="content-card">
+        <h3>DNA → RNA (Transcription)</h3>
+        <p>RNA polymerase reads DNA template and synthesizes complementary RNA (mRNA, tRNA, rRNA). Only specific genes are transcribed. Regulatory proteins control which genes are expressed. Post-transcriptional processing adds 5' cap and 3' poly-A tail.</p>
+      </div>
+      
+      <div class="content-card">
+        <h3>RNA → Protein (Translation)</h3>
+        <p>Ribosomes read mRNA sequences and assemble proteins. tRNAs bring amino acids matching mRNA codons. Peptide bonds form between amino acids. Process involving ~100 different ribosomal proteins and rRNAs.</p>
+      </div>
+      
+      <div class="content-card">
+        <h3>RNA → RNA (Reverse Transcription)</h3>
+        <p>Reverse transcriptase (from retroviruses) synthesizes DNA from RNA template. Used naturally by retroviruses (HIV). Used experimentally for studying gene expression. Not typically part of central dogma in normal cells.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-sep"></div>
+
+<section>
+  <div class="section-inner">
+    <h2 class="section-title">Transcription: DNA to <span>mRNA</span></h2>
+    <div class="section-divider"></div>
+    
+    <div class="cards-grid">
+      <div class="content-card">
+        <h3>Initiation</h3>
+        <p>RNA polymerase binds to promoter region. Transcription factor proteins help recruit polymerase. Promoter sequences (TATA box) signal polymerase where to start. Different genes have different promoter strengths.</p>
+      </div>
+      
+      <div class="content-card">
+        <h3>Elongation</h3>
+        <p>RNA polymerase moves along DNA template strand, synthesizing mRNA. Uses nucleotriphosphates (ATP, GTP, CTP, UTP). Rate: ~50 nucleotides/second in bacteria, ~20/second in eukaryotes. Proofreading maintains accuracy.</p>
+      </div>
+      
+      <div class="content-card">
+        <h3>Termination</h3>
+        <p>Transcription ends at termination signals (stop codons or sequences). In prokaryotes, Rho protein may assist. In eukaryotes, cleavage and polyadenylation signals direct termination. mRNA is released as primary transcript.</p>
+      </div>
+      
+      <div class="content-card">
+        <h3>Post-Transcriptional Processing (Eukaryotes)</h3>
+        <p>5' capping: 7-methylguanosine cap added. 3' polyadenylation: ~200 adenines added. Splicing: introns removed, exons ligated by snRNPs. Alternative splicing creates multiple proteins from single gene.</p>
+      </div>
+      
+      <div class="content-card">
+        <h3>mRNA Export</h3>
+        <p>Processed mRNA exits nucleus through nuclear pore complexes. In cytoplasm, mRNA binds ribosomes for translation. mRNA can be transported to specific cell locations. Localized translation enables spatial organization of proteins.</p>
+      </div>
+      
+      <div class="content-card">
+        <h3>mRNA Stability</h3>
+        <p>5' cap and poly-A tail protect from degradation. Regulatory proteins (RNA-binding proteins) stabilize or destabilize mRNA. Average mRNA half-life: 5 hours in bacteria, 1-10 hours in eukaryotes.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-sep"></div>
+
+<section>
+  <div class="section-inner">
+    <h2 class="section-title">Translation: mRNA to <span>Protein</span></h2>
+    <div class="section-divider"></div>
+    
+    <div class="cards-grid">
+      <div class="content-card">
+        <h3>🏭 Ribosome Structure</h3>
+        <p>Two subunits: 60S (eukaryotes) or 50S (bacteria), and 40S/30S. Contains rRNA and ribosomal proteins. Three tRNA binding sites: A (aminoacyl), P (peptidyl), E (exit). Catalyzes peptide bond formation.</p>
+      </div>
+      
+      <div class="content-card">
+        <h3>Initiation</h3>
+        <p>mRNA binds ribosome at ribosome binding site (Shine-Dalgarno in bacteria). Initiator tRNA brings formyl-methionine (fMet) or methionine in eukaryotes. Initiation factors (IF2, others) aid assembly. AUG start codon recognized.</p>
+      </div>
+      
+      <div class="content-card">
+        <h3>Elongation Cycle</h3>
+        <p>Three steps: 1) EF-Tu brings aminoacyl-tRNA to A site. 2) Peptidyl transferase catalyzes bond between P-site and A-site amino acids. 3) Translocase moves tRNAs: P→E, A→P, emptying A site for next tRNA. Each cycle makes one bond.</p>
+      </div>
+      
+      <div class="content-card">
+        <h3>Proofreading &amp; Accuracy</h3>
+        <p>Error rate: ~1 mistake per 10,000 codons. tRNA cognate recognition by ribosome. EF-Tu GTPase adds second proofreading step. Codon-anticodon pairing verified twice. Ensures genetic code is accurately read.</p>
+      </div>
+      
+      <div class="content-card">
+        <h3>Termination</h3>
+        <p>Stop codons (UAA, UAG, UGA) have no corresponding tRNA. Release factors (RF1/RF2 in bacteria, eRF1 in eukaryotes) bind release factors recognize stop codons. Hydrolysis of final peptide-tRNA bond releases polypeptide.</p>
+      </div>
+      
+      <div class="content-card">
+        <h3>Speed &amp; Efficiency</h3>
+        <p>Rate: ~20 amino acids/second in eukaryotes, ~20 in bacteria. Polyribosomes (multiple ribosomes on single mRNA). Single mRNA translated many times simultaneously. Synthesis takes ~1 minute for average protein (400 amino acids).</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-sep"></div>
+
+<section>
+  <div class="section-inner">
+    <h2 class="section-title">Post-Translational <span>Modifications</span></h2>
+    <div class="section-divider"></div>
+    
+    <div class="cards-grid">
+      <div class="content-card">
+        <h3>Signal Sequences &amp; Targeting</h3>
+        <p>Signal peptides direct proteins to specific destinations: ER (membrane proteins, secreted), mitochondria, chloroplasts, nucleus. Signal Recognition Particle (SRP) recognizes ER signal and directs ribosome. Targeting often studied by fluorescent protein tags.</p>
+      </div>
+      
+      <div class="content-card">
+        <h3>Protein Folding</h3>
+        <p>Nascent polypeptide begins folding co-translationally. Chaperone proteins (Hsp70, Hsp90) assist folding and prevent aggregation. GroEL/ES forms cage for folding. Misfolded proteins cleared by proteasome via ubiquitination.</p>
+      </div>
+      
+      <div class="content-card">
+        <h3>Phosphorylation</h3>
+        <p>Addition of phosphate groups to serine, threonine, tyrosine residues. Catalyzed by kinases, removed by phosphatases. Major regulatory mechanism for cell signaling and protein activity. ~30% of proteins are phosphorylated.</p>
+      </div>
+      
+      <div class="content-card">
+        <h3>Glycosylation</h3>
+        <p>Attachment of carbohydrate groups (N-linked on asparagine, O-linked on serine/threonine). Affects protein folding, stability, recognition. Glycoproteins important for cell signaling, immune recognition. ~50% of blood plasma proteins are glycoproteins.</p>
+      </div>
+      
+      <div class="content-card">
+        <h3>Ubiquitination &amp; Degradation</h3>
+        <p>Ubiquitin (76 aa protein) covalently attached to lysines. Poly-ubiquitin chains mark proteins for proteasome degradation. Enables precise control of protein levels. Dysregulation in cancer and neurodegeneration.</p>
+      </div>
+      
+      <div class="content-card">
+        <h3>Proteolytic Cleavage</h3>
+        <p>Removal of signal peptides and pro-sequences by proteases. Activates zymogens (inactive enzyme precursors). Examples: insulin (from preproinsulin), caspases (apoptosis). Irreversible modification controlling protein activity.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="footer-title">⬡ Protein Structure Explorer — Advanced Edition</div>
+  <div class="footer-sub">
+    Made by [Your Name] · Biology Class 2024–25<br>
+    Sources: RCSB PDB · UniProt · NCBI · Lehninger Principles of Biochemistry 6th Ed · Alberts Molecular Biology of the Cell 6th Ed
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
+
