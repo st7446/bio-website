@@ -27,8 +27,7 @@ const navigationMap = {
   'synthesis': 'protein-synthesis.html',
   'evolution': 'evolution.html',
   'quiz': 'quiz.html',
-  'glossary': 'glossary.html',
-  'viewer': '3d-models.html'
+  'glossary': 'glossary.html'
 };
 
 sectionTitles.forEach(title => {
