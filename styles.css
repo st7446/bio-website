@@ -132,7 +132,6 @@ nav{
   border:1px solid rgba(0,245,255,0.15);
   border-radius:8px;
 }
-.drop-text{}
 .drop-text .dt{
   font-family:'Orbitron',monospace;
   font-size:0.6rem;font-weight:600;
@@ -552,6 +551,149 @@ footer{
 }
 
 /* ══════════════════════════════════════════════
+   COLLABORATION CARD - GLASSMORPHISM
+══════════════════════════════════════════════ */
+.collab-card{
+  position:relative;
+  margin-top:3rem;
+  max-width:500px;
+  margin-left:auto;
+  margin-right:auto;
+  padding:2rem;
+  border-radius:20px;
+  background:rgba(0,245,255,0.02);
+  backdrop-filter:blur(10px);
+  border:1.5px solid rgba(0,245,255,0.15);
+  text-align:center;
+  animation:fadeInUp .8s ease 1s both;
+  overflow:hidden;
+  z-index:2;
+  box-shadow:inset 0 0 40px rgba(0,245,255,0.08);
+}
+
+/* Animated gradient border glow */
+.collab-glow{
+  position:absolute;inset:0;
+  border-radius:20px;
+  background:linear-gradient(135deg,rgba(0, 247, 255, 0.019),rgba(0, 255, 136, 0.03));
+  z-index:-1;
+  opacity:0.02;
+  pointer-events:none;
+}
+
+/* Glow/shadow effect around card */
+.collab-card::before{
+  content:'';
+  position:absolute;
+  inset:-1px;
+  border-radius:20px;
+  background:linear-gradient(135deg,#00f5ff,#00ff88,#00f5ff);
+  background-size:300% 300%;
+  z-index:-2;
+  opacity:0.2;
+  animation:glowShift 6s ease infinite,glowPulse 3s ease-in-out infinite;
+  filter:blur(8px);
+}
+
+@keyframes glowShift{
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
+
+@keyframes glowPulse{
+  0%,100%{opacity:0.15}
+  50%{opacity:0.3}
+}
+
+@keyframes fadeInUp{
+  from{opacity:0;transform:translateY(30px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+.collab-card:hover .collab-glow{
+  animation:glowShift 3s ease infinite,glowPulse 2s ease-in-out infinite;
+}
+
+.collab-card:hover::before{
+  animation:glowShift 3s ease infinite,glowPulse 2s ease-in-out infinite;
+  opacity:0.35;
+}
+
+.collab-content{
+  position:relative;
+  z-index:1;
+}
+
+.collab-label{
+  font-family:'Space Mono',monospace;
+  font-size:0.65rem;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  color:var(--cyan);
+  margin-bottom:0.5rem;
+  text-shadow:0 0 8px rgba(0,245,255,0.3);
+  opacity:0.8;
+}
+
+.collab-title{
+  font-family:'Orbitron',sans-serif;
+  font-size:clamp(2rem,5vw,2.8rem);
+  font-weight:900;
+  background:linear-gradient(90deg,#00f5ff,#00ff88,#00f5ff);
+  background-size:200%;
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+  margin-bottom:0.75rem;
+  animation:titleGlow 4s linear infinite;
+  text-shadow:0 0 15px rgba(0,245,255,0.25);
+  letter-spacing:1px;
+}
+
+@keyframes titleGlow{
+  0%{background-position:0% center}
+  100%{background-position:200% center}
+}
+
+.collab-subtitle{
+  font-size:0.95rem;
+  color:var(--text-dim);
+  margin-bottom:1.5rem;
+  line-height:1.5;
+}
+
+.collab-link{
+  display:inline-block;
+  padding:0.8rem 1.8rem;
+  border-radius:50px;
+  font-family:'Orbitron',sans-serif;
+  font-size:0.75rem;
+  font-weight:700;
+  letter-spacing:1.5px;
+  text-transform:uppercase;
+  text-decoration:none;
+  background:rgba(0,255,136,0.08);
+  color:#00ff88;
+  border:1.5px solid rgba(0,255,136,0.4);
+  box-shadow:0 0 15px rgba(0,255,136,0.2),inset 0 0 15px rgba(0,255,136,0.05);
+  transition:all .4s cubic-bezier(0.34,1.56,0.64,1);
+  cursor:pointer;
+}
+
+.collab-link:hover{
+  background:rgba(0,255,136,0.15);
+  color:#00f5ff;
+  border-color:#00f5ff;
+  box-shadow:0 0 30px rgba(0,255,136,0.4),0 0 50px rgba(0,245,255,0.3),inset 0 0 15px rgba(0,255,136,0.1);
+  transform:translateY(-3px) scale(1.05);
+}
+
+.collab-link:active{
+  transform:translateY(-1px) scale(0.98);
+}
+
+/* ══════════════════════════════════════════════
    BACK BUTTON
 ══════════════════════════════════════════════ */
 .back-btn{
@@ -582,4 +724,12 @@ footer{
   .mega-drop{min-width:300px!important}
   .cards-grid{grid-template-columns:1fr;}
   .page-header{padding:80px 20px 40px}
+  .collab-card{
+    margin-top:2rem;
+    padding:1.5rem;
+    margin-left:1rem;
+    margin-right:1rem;
+  }
+  .collab-title{font-size:clamp(1.5rem,4vw,2rem)}
+  .collab-subtitle{font-size:0.9rem}
 }
